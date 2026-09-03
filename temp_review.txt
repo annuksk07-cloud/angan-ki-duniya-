@@ -1,0 +1,141 @@
+            </section>
+
+      {/* NEW SECTION: INVITATION MESSAGE */}
+      <section ref={invRef} className="relative z-10 w-full min-h-[100dvh] flex flex-col items-center justify-center text-center bg-[#F8F0DF] overflow-hidden shadow-[0_-10px_30px_rgba(0,0,0,0.15)]">
+        {/* Cinematic Background Layer */}
+        <div className="absolute inset-0 z-0 bg-[#F8F0DF]">
+          <motion.div 
+            className="w-full h-full origin-center"
+            style={{ scale: 1.02, y: invY }}
+          >
+            <img 
+              src={ASSETS.invitation} 
+              alt="Invitation Background" 
+              className="w-full h-full object-cover object-center"
+            />
+          </motion.div>
+          {/* Subtle Background Life */}
+          <motion.div 
+            className="absolute -inset-[30%] pointer-events-none opacity-40 mix-blend-overlay"
+            style={{
+              background: "radial-gradient(circle at 50% 50%, rgba(255, 250, 240, 0.8) 0%, transparent 60%)"
+            }}
+            animate={{
+              x: ["-5%", "5%", "-2%", "-5%"],
+              y: ["-5%", "2%", "5%", "-5%"],
+              scale: [1, 1.05, 0.98, 1]
+            }}
+            transition={{ duration: 25, repeat: Infinity, ease: "easeInOut" }}
+          />
+          {/* Soft-light overlay layer ready for cinematic animation */}
+          <motion.div className="absolute inset-0 bg-[#F8F0DF] mix-blend-overlay opacity-20 pointer-events-none" />
+          {/* Subtle warm ivory text-readability layer */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(248,240,223,0.85)_0%,rgba(248,240,223,0)_70%)] pointer-events-none" />
+        </div>
+
+        {/* Subtle Decorative Elements (Petals) */}
+        <div className="absolute inset-0 z-[5] overflow-hidden pointer-events-none">
+          <motion.img 
+            src={ASSETS.petalBlush}
+            className="absolute w-12 sm:w-16 blur-[0.5px] drop-shadow-[0_4px_8px_rgba(165,145,125,0.3)] contrast-110 saturate-105"
+            style={{ left: "8%", bottom: "25%" }}
+            animate={{
+              y: ["0dvh", "15dvh"],
+              x: ["0vw", "4vw"],
+              rotate: [0, 80],
+              opacity: [0, 0.7, 0]
+            }}
+            transition={{ duration: 20, repeat: Infinity, ease: "linear", delay: 0 }}
+            alt=""
+          />
+          <motion.img 
+            src={ASSETS.petalPeach}
+            className="absolute w-10 sm:w-14 blur-[1px] drop-shadow-[0_3px_6px_rgba(165,145,125,0.3)] contrast-110 saturate-105"
+            style={{ right: "10%", bottom: "30%" }}
+            animate={{
+              y: ["0dvh", "18dvh"],
+              x: ["0vw", "-3vw"],
+              rotate: [45, -45],
+              opacity: [0, 0.65, 0]
+            }}
+            transition={{ duration: 24, repeat: Infinity, ease: "linear", delay: 4 }}
+            alt=""
+          />
+          <motion.img 
+            src={ASSETS.petalMarigold}
+            className="absolute w-6 sm:w-8 blur-[1.5px] drop-shadow-[0_2px_4px_rgba(165,145,125,0.25)] contrast-105 saturate-100"
+            style={{ left: "15%", bottom: "45%" }}
+            animate={{
+              y: ["0dvh", "22dvh"],
+              x: ["0vw", "6vw"],
+              rotate: [-20, 90],
+              opacity: [0, 0.5, 0]
+            }}
+            transition={{ duration: 28, repeat: Infinity, ease: "linear", delay: 10 }}
+            alt=""
+          />
+        </div>
+
+        <motion.div 
+          className="relative z-10 max-w-[90%] sm:max-w-xl md:max-w-2xl mx-auto flex flex-col items-center justify-center px-4 sm:px-6 py-[14dvh] sm:py-20"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.5, delayChildren: 0.2 } } }}
+        >
+          <motion.h2 variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#5A1520] text-[28px] sm:text-4xl md:text-5xl font-tiro mb-6 sm:mb-8 drop-shadow-sm">सादर आमंत्रण</motion.h2>
+          <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 0.7, transition: { duration: 1.5, ease: "easeOut" } } }} className="w-12 sm:w-16 h-[1px] bg-[#B78B4A] mb-8 sm:mb-12" />
+          <motion.p variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#4A2014] font-noto text-[16px] sm:text-[19px] md:text-[21px] leading-[2] font-medium w-full mx-auto">ईश्वर की असीम कृपा एवं परिवारजनों के आशीर्वाद से</motion.p>
+          <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#5A1520] text-[26px] sm:text-3xl md:text-4xl block my-8 sm:my-10 font-normal font-amita drop-shadow-md w-full mx-auto">काव्या एवं आदित्य</motion.div>
+          <motion.p variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#4A2014] font-noto text-[16px] sm:text-[19px] md:text-[21px] leading-[2] mb-10 sm:mb-12 font-medium w-full mx-auto">शुभ विवाह के पावन बंधन में बंधने जा रहे हैं।</motion.p>
+          <motion.p variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#4A2014] font-noto text-[15px] sm:text-[18px] md:text-[20px] leading-[2] mb-12 sm:mb-14 w-full mx-auto opacity-95">इस मंगल अवसर पर आप सपरिवार सादर आमंत्रित हैं。<br className="hidden sm:block" />कृपया पधारकर नवदंपति को अपना स्नेह एवं आशीर्वाद प्रदान करें।</motion.p>
+          <motion.p variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#B78B4A] font-noto text-[16px] sm:text-[19px] md:text-[21px] font-medium italic drop-shadow-sm opacity-90">आपकी उपस्थिति हमारे लिए सौभाग्य होगी।</motion.p>
+        </motion.div>
+      </section>
+
+      {/* NEW SECTION: FAMILY BLESSING */}
+      <section className="relative w-full min-h-[100dvh] flex flex-col items-center justify-center text-center bg-[#F8F0DF] overflow-hidden py-8 sm:py-16">
+        {/* Cinematic Background Layer */}
+        <div className="absolute inset-0 z-0 bg-[#F8F0DF]">
+          <motion.div 
+            className="w-full h-full origin-center"
+            style={{ scale: 1.02, y: invY }} // Reusing the same cinematic drift to maintain continuity
+          >
+            <img 
+              src={ASSETS.familyBg} 
+              alt="Family Background" 
+              className="w-full h-full object-cover object-center" 
+            />
+          </motion.div>
+          {/* Soft-light overlay layer ready for cinematic animation */}
+          <motion.div className="absolute inset-0 bg-[#F8F0DF] mix-blend-overlay opacity-20 pointer-events-none" />
+          {/* Subtle warm ivory text-readability layer */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(248,240,223,0.9)_0%,rgba(248,240,223,0)_70%)] pointer-events-none" />
+        </div>
+
+        <motion.div
+          className="relative z-10 w-full max-w-[90%] sm:max-w-4xl lg:max-w-6xl mx-auto flex flex-col items-center"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.4, delayChildren: 0.2 }
+            }
+          }}
+        >
+          {/* Ganesha */}
+          <motion.img
+            variants={{ hidden: { opacity: 0, scale: 0.95, y: -10 }, visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } } }}
+            src={ASSETS.ganesha}
+            alt="Lord Ganesha"
+            className="w-16 sm:w-20 md:w-24 mb-6 sm:mb-8 object-contain opacity-90 drop-shadow-sm"
+          />
+
+          {/* Heading */}
+          <motion.h2
+            variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}
+            className="text-[#5A1520] text-3xl sm:text-4xl md:text-5xl font-tiro mb-3 sm:mb-4 drop-shadow-sm"
+          >

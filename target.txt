@@ -1,0 +1,21 @@
+              शुभारंभ
+            </h1>
+            <div className="relative z-10 w-10 h-[1px] bg-[#B78B4A] mx-auto mb-6 sm:mb-8 opacity-90 shadow-sm" />
+            <p className="relative z-10 text-[15px] sm:text-lg font-noto text-[#F8F0DF] drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)] leading-[1.8] font-medium">
+              अपना निमंत्रण खोलें<br/>
+              हमारे परिवार की ओर से सप्रेम आमंत्रण
+            </p>
+          </div>
+        </motion.div>
+
+      </section>
+
+      {/* NEW SECTION: INVITATION MESSAGE */}
+      <section className="relative z-10 w-full min-h-[100dvh] flex flex-col items-center justify-center text-center bg-[#F8F0DF] overflow-hidden shadow-[0_-10px_30px_rgba(0,0,0,0.15)]">
+        
+        {/* Background Layer */}
+        <div className="absolute inset-0 z-0 overflow-hidden bg-[#F8F0DF]">
+          <motion.div
+            className="w-full h-full origin-center"
+            animate={{ scale: [1, 1.05] }}
+            transition={{ duration: 25, ease: "easeInOut", repeat: Infinity, repeatType: "mirror" }}

@@ -1,0 +1,6 @@
+{
+  "name": "AANGAN — आँगन से मंडप तक",
+  "description": "A premium animated Indian wedding invitation website.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

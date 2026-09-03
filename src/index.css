@@ -1,0 +1,151 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Cinzel", serif;
+  --font-amita: "Amita", serif;
+  --font-tiro: "Tiro Devanagari Hindi", serif;
+  --font-noto: "Noto Serif Devanagari", serif;
+  --font-hindi: "Tiro Devanagari Hindi", serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: #F8F0DF;
+}
+
+@media (max-width: 1023px) {
+  /* =========================================
+     1. FAMILY SECTION RESPONSIVE
+     ========================================= */
+  .family-cols-container {
+    gap: 16px !important;
+  }
+  .family-col {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  /* Ensure text stays centered and has space for absolute ornaments */
+  .family-col-title, .family-col-text {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+  .botanical-left-wrapper {
+    left: -15px !important;
+    width: 30px !important;
+    justify-content: flex-start !important;
+  }
+  .botanical-right-wrapper {
+    right: -15px !important;
+    width: 30px !important;
+    justify-content: flex-end !important;
+  }
+  .botanical-left, .botanical-right {
+    height: auto !important;
+    max-height: 120px !important;
+  }
+  .sacred-thread-wrapper {
+    width: 20px !important;
+  }
+
+  /* =========================================
+     2. MANGAL KARYAKRAM RESPONSIVE
+     ========================================= */
+  .mangal-grid {
+    gap: 24px 8px !important; 
+    margin-top: 10px !important;
+  }
+  
+  .mangal-event-img {
+    margin-bottom: 8px !important;
+  }
+  .mangal-haldi, .mangal-mehndi {
+    width: 60px !important;
+  }
+  .mangal-sangeet {
+    width: 80px !important;
+  }
+  .mangal-vivah {
+    width: 90px !important;
+  }
+  
+  .mangal-event-title {
+    font-size: 18px !important;
+    margin-bottom: 4px !important;
+  }
+  .mangal-event-text p {
+    font-size: 13px !important;
+    line-height: 1.3 !important;
+  }
+}
+
+/* DESKTOP SPECIFIC OVERRIDES (1024px and up) */
+@media (min-width: 1024px) {
+  .tablet-hero-curtain {
+    width: 100vw !important;
+    height: 100dvh !important;
+    object-fit: fill !important;
+    object-position: top center !important;
+    transform: translateY(0) !important;
+  }
+}
+
+/* TABLET SPECIFIC OVERRIDES (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .tablet-hero-curtain {
+    width: 100vw !important;
+    height: 100dvh !important;
+    object-fit: fill !important;
+    object-position: top center !important;
+    transform: translateY(0) !important;
+  }
+  
+  .tablet-sadar-section {
+    min-height: 82svh !important;
+  }
+
+  .tablet-sadar-bg {
+    object-fit: fill !important;
+  }
+
+  .family-cols-container {
+    gap: 32px !important;
+  }
+  .family-col-title, .family-col-text {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .botanical-left-wrapper {
+    left: -10px !important;
+    width: 40px !important;
+  }
+  .botanical-right-wrapper {
+    right: -10px !important;
+    width: 40px !important;
+  }
+  .botanical-left, .botanical-right {
+    max-height: 180px !important;
+  }
+  .sacred-thread-wrapper {
+    width: 40px !important;
+  }
+  
+  .mangal-grid {
+    gap: 48px 32px !important;
+  }
+  
+  .mangal-haldi { width: 90px !important; }
+  .mangal-mehndi { width: 80px !important; }
+  .mangal-sangeet { width: 110px !important; }
+  .mangal-vivah { width: 120px !important; }
+  
+  .mangal-event-title {
+    font-size: 24px !important;
+    margin-bottom: 8px !important;
+  }
+  .mangal-event-text p {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+  }
+}
