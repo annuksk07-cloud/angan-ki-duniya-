@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; background: #333; color: white; height: 100vh; width: 100vw; overflow: hidden; }
+  .container { position: absolute; inset: 0; width: 100vw; height: 100vh; }
+  .valance { position: absolute; top: 0; left: 0; width: 100%; height: 20%; object-fit: cover; object-position: top center; border: 1px solid red; }
+  
+  .left-panel { position: absolute; top: 0; left: 0; width: 35%; height: 100%; overflow: hidden; border: 1px solid blue; }
+  .left-panel img { height: 100%; width: auto; max-width: none; position: absolute; top: 0; right: 0; }
+
+  .right-panel { position: absolute; top: 0; right: 0; width: 35%; height: 100%; overflow: hidden; border: 1px solid green; }
+  .right-panel img { height: 100%; width: auto; max-width: none; position: absolute; top: 0; left: 0; }
+</style>
+</head>
+<body>
+<div class="container">
+  <!-- Valance -->
+  <img src="curtain.png" class="valance" />
+  
+  <div class="left-panel"><img src="curtain.png" /></div>
+  <div class="right-panel"><img src="curtain.png" /></div>
+</div>
+</body>
+</html>

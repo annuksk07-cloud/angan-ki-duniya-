@@ -80,27 +80,8 @@ body {
   }
 }
 
-/* DESKTOP SPECIFIC OVERRIDES (1024px and up) */
-@media (min-width: 1024px) {
-  .tablet-hero-curtain {
-    width: 100vw !important;
-    height: 100dvh !important;
-    object-fit: fill !important;
-    object-position: top center !important;
-    transform: translateY(0) !important;
-  }
-}
-
 /* TABLET SPECIFIC OVERRIDES (768px - 1023px) */
 @media (min-width: 768px) and (max-width: 1023px) {
-  .tablet-hero-curtain {
-    width: 100vw !important;
-    height: 100dvh !important;
-    object-fit: fill !important;
-    object-position: top center !important;
-    transform: translateY(0) !important;
-  }
-  
   .tablet-sadar-section {
     min-height: 82svh !important;
   }

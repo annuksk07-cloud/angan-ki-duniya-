@@ -4,6 +4,7 @@ import { motion, AnimatePresence, useMotionValue, useTransform, animate, useScro
 const ASSETS = {
   entrance: "https://lh3.googleusercontent.com/d/1WZpZ2vSFvDFVoAmAyMdyiVei4SUcQllQ",
   curtain: "https://lh3.googleusercontent.com/d/1r0AN7KEwdB3Xlx9DoF3RHgEP9E2nXmf8",
+  curtainTablet: "https://lh3.googleusercontent.com/d/1Zs7G0wzRUm14bogHgh3ZAOonp7evADKA",
   tassel: "https://lh3.googleusercontent.com/d/156hvtCuQWSzDYzVvmF22birhPm6rsDDO",
   hero: "https://lh3.googleusercontent.com/d/1afmtG7HD9UgrC8FmZO9fLLs6uXWtTyh6",
   invitation: "https://lh3.googleusercontent.com/d/13_p9YCCrmywaQat_zBqVywsKxNivluUu",
@@ -247,7 +248,7 @@ export default function App() {
           </AnimatePresence>
         </motion.div>
 
-        {/* 3. Curtains */}
+        {/* 3. Curtains (Mobile) */}
         <div className="absolute inset-0 z-30 pointer-events-none">
           {/* Left Curtain Panel */}
           <motion.div 
@@ -263,9 +264,16 @@ export default function App() {
               animate={isDraggingLeft ? "dragging" : leftHooked ? "opened" : "closed"}
               variants={swayLeft}
             >
+              {/* Mobile and Desktop */}
               <img 
                 src={ASSETS.curtain} 
-                className="w-[125vw] h-[115dvh] -translate-y-[7dvh] object-cover object-top max-w-none flex-shrink-0 tablet-hero-curtain" 
+                className="block md:hidden lg:block w-[125vw] h-[115dvh] -translate-y-[7dvh] object-cover object-top max-w-none flex-shrink-0" 
+                alt="" 
+              />
+              {/* Tablet Only */}
+              <img 
+                src={ASSETS.curtainTablet} 
+                className="hidden md:block lg:hidden w-[100vw] h-[100dvh] object-cover object-top max-w-none flex-shrink-0" 
                 alt="" 
               />
             </motion.div>
@@ -286,15 +294,21 @@ export default function App() {
               animate={isDraggingRight ? "dragging" : rightHooked ? "opened" : "closed"}
               variants={swayRight}
             >
+              {/* Mobile and Desktop */}
               <img 
                 src={ASSETS.curtain} 
-                className="w-[125vw] h-[115dvh] -translate-y-[7dvh] object-cover object-top max-w-none flex-shrink-0 tablet-hero-curtain" 
+                className="block md:hidden lg:block w-[125vw] h-[115dvh] -translate-y-[7dvh] object-cover object-top max-w-none flex-shrink-0" 
+                alt="" 
+              />
+              {/* Tablet Only */}
+              <img 
+                src={ASSETS.curtainTablet} 
+                className="hidden md:block lg:hidden w-[100vw] h-[100dvh] object-cover object-top max-w-none flex-shrink-0" 
                 alt="" 
               />
             </motion.div>
             </motion.div>
           </motion.div>
-          {/* Tie-Back Holders Removed */}
         </div>
 
         {/* Invisible Drag Handles */}
