@@ -19,7 +19,14 @@ const ASSETS = {
   haldi: "https://lh3.googleusercontent.com/d/1OKHOSxAJKQb-qnMpml_LuXDjgu34SCvy",
   mehndi: "https://lh3.googleusercontent.com/d/1ZZCoo3lL-ZZcHajPJVoVYrSzGZVt2xo2",
   sangeet: "https://lh3.googleusercontent.com/d/1FeK2oV0ro8KmDyyuiNBw4kaUD76iXnoz",
-  vivah: "https://lh3.googleusercontent.com/d/1SvOsfro3OIA1_bU431zP6Noh2YFxv6_5"
+  vivah: "https://lh3.googleusercontent.com/d/1SvOsfro3OIA1_bU431zP6Noh2YFxv6_5",
+  mandapOverlay: "https://lh3.googleusercontent.com/d/17MRY8pXhbyKR7ul3EsWM7QgVk4rlgobr",
+  havanKund: "https://lh3.googleusercontent.com/d/1wIrYbswMAry6tvgs-woGFYI75josZjVb",
+  havanFlame: "https://lh3.googleusercontent.com/d/1C6x_6Xi-ydN_w8BMpzbipmPJY1pIRxhg",
+  sacredSmoke: "https://lh3.googleusercontent.com/d/12PWDx2sv3xkHnfi3ndkWoPKDJbGTglzB",
+  mandapFloral: "https://lh3.googleusercontent.com/d/1WiMfFxLJb-kEs3L2nEHPwnaGL4Uz4Gr1",
+  jasmineStrand: "https://lh3.googleusercontent.com/d/10uBJFi5cQvmwoLT63GIUnZt8SaEYXd9S",
+  softGlow: "https://lh3.googleusercontent.com/d/1CeAhYB_3w1lTxo7973TPYLFDpqwKBEDT"
 };
 
 const itemVariants = {
@@ -730,6 +737,164 @@ export default function App() {
 
           </div>
         </motion.div>
+      </section>
+
+      {/* 5. Vivah Sanskar Section */}
+      <section className="relative w-full flex flex-col items-center justify-start overflow-hidden pt-20 pb-12 sm:pt-24 sm:pb-16 lg:pt-28 lg:pb-24">
+        {/* Layer 1: Background */}
+        <motion.img 
+          initial={{ scale: 1 }}
+          whileInView={{ scale: 1.02, transition: { duration: 20, ease: "linear" } }}
+          src={ASSETS.familyBg} 
+          alt="Vivah Background" 
+          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+        />
+
+        {/* Heading & Subtitle */}
+        <motion.div
+          className="relative z-30 w-full max-w-5xl mx-auto flex flex-col items-center mt-2 px-4"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: { staggerChildren: 0.3, delayChildren: 0.1 }
+            }
+          }}
+        >
+          <motion.h2
+            variants={{ hidden: { opacity: 0, y: 12 }, visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } } }}
+            className="text-[#5A1520] text-[clamp(2.25rem,6vw,4rem)] leading-tight font-tiro mb-2 sm:mb-4 drop-shadow-sm text-center"
+          >
+            विवाह संस्कार
+          </motion.h2>
+
+          <motion.p
+            variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } } }}
+            className="text-[#B78B4A] text-[clamp(1.05rem,2.5vw,1.65rem)] font-serif tracking-wide italic text-center drop-shadow-sm"
+          >
+            सात पग, सात वचन, अग्नि साक्षी मंगल मिलन
+          </motion.p>
+        </motion.div>
+
+        {/* Cinematic Scene */}
+        <div className="relative z-10 w-[88%] sm:w-[84%] md:w-[80%] max-w-[950px] mx-auto mt-6 sm:mt-10 lg:mt-12 flex justify-center">
+            
+            {/* The Scene Coordinate System */}
+            {/* Dictated strictly by the Mandap's natural aspect ratio. All assets scale together inside this. */}
+            <div className="relative w-full">
+                
+                {/* Layer 1: Soft Glow (Behind Mandap) */}
+                <motion.img
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 0.35, transition: { duration: 3, delay: 0.5 } }}
+                  animate={{ opacity: [0.2, 0.4, 0.2] }}
+                  transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                  viewport={{ once: true }}
+                  src={ASSETS.softGlow}
+                  className="absolute bottom-[15%] left-1/2 -translate-x-1/2 w-[70%] max-w-[700px] pointer-events-none mix-blend-screen z-0"
+                  alt=""
+                />
+
+                {/* Layer 2: Mandap Overlay (Master Size Definer) */}
+                <motion.img 
+                  initial={{ opacity: 0, y: "4%" }}
+                  whileInView={{ opacity: 1, y: "0%", transition: { duration: 3, ease: "easeOut", delay: 0.2 } }}
+                  viewport={{ once: true }}
+                  src={ASSETS.mandapOverlay} 
+                  className="relative w-full h-auto object-contain object-bottom pointer-events-none z-10 block" 
+                  style={{
+                    clipPath: "polygon(0% 0%, 100% 0%, 100% 95%, 95% 98%, 88% 99.5%, 80% 100%, 20% 100%, 12% 99.5%, 5% 98%, 0% 95%)"
+                  }}
+                  alt="Mandap" 
+                />
+
+                {/* Layer 3: Jasmine Strands */}
+                <motion.img 
+                  initial={{ opacity: 0, y: "-10%" }}
+                  whileInView={{ opacity: 0.9, y: "0%", transition: { duration: 2.5, ease: "easeOut", delay: 0.8 } }}
+                  animate={{ x: [0, 3, 0], rotate: [0, 1, 0] }}
+                  transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
+                  viewport={{ once: true }}
+                  src={ASSETS.jasmineStrand} 
+                  className="absolute top-[12%] left-[23%] w-[4.5%] h-auto pointer-events-none z-20 origin-top drop-shadow-sm" 
+                  alt="" 
+                />
+                <motion.img 
+                  initial={{ opacity: 0, y: "-10%" }}
+                  whileInView={{ opacity: 0.9, y: "0%", transition: { duration: 2.5, ease: "easeOut", delay: 0.9 } }}
+                  animate={{ x: [0, -3, 0], rotate: [0, -1, 0] }}
+                  transition={{ duration: 8.5, repeat: Infinity, ease: "easeInOut" }}
+                  viewport={{ once: true }}
+                  src={ASSETS.jasmineStrand} 
+                  className="absolute top-[12%] right-[23%] w-[4.5%] h-auto pointer-events-none z-20 origin-top drop-shadow-sm" 
+                  alt="" 
+                />
+
+                {/* Layer 4: Fire Assembly (Kund, Flame, Smoke) */}
+                <div className="absolute bottom-[16%] left-1/2 -translate-x-1/2 w-[22%] z-30 flex flex-col items-center justify-end pointer-events-none">
+                  
+                  {/* Sacred Smoke */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1, transition: { duration: 3, delay: 2.2 } }}
+                    viewport={{ once: true }}
+                    className="absolute bottom-[55%] w-[120%] flex justify-center mix-blend-screen z-10"
+                  >
+                    <motion.img
+                      animate={{ y: ["0%", "-15%"], x: ["0%", "3%", "-2%"], opacity: [0, 0.35, 0] }}
+                      transition={{ duration: 9, repeat: Infinity, ease: "linear" }}
+                      src={ASSETS.sacredSmoke}
+                      className="w-full h-auto"
+                      alt=""
+                    />
+                  </motion.div>
+
+                  {/* Havan Flame */}
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1, transition: { duration: 2, delay: 1.6 } }}
+                    viewport={{ once: true }}
+                    className="absolute bottom-[75%] w-[40%] flex justify-center origin-bottom z-20"
+                  >
+                    <motion.img
+                      animate={{ 
+                        scaleY: [1, 1.05, 0.95, 1.05, 1], 
+                        scaleX: [1, 0.98, 1.02, 0.98, 1], 
+                        opacity: [0.85, 0.95, 0.85, 0.95, 0.85] 
+                      }}
+                      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                      src={ASSETS.havanFlame}
+                      className="w-full h-auto origin-bottom"
+                      alt=""
+                    />
+                  </motion.div>
+
+                  {/* Havan Kund */}
+                  <motion.img
+                    initial={{ opacity: 0, y: "15%" }}
+                    whileInView={{ opacity: 1, y: "0%", transition: { duration: 2.5, ease: "easeOut", delay: 1.2 } }}
+                    viewport={{ once: true }}
+                    src={ASSETS.havanKund}
+                    className="relative w-full h-auto drop-shadow-2xl z-30"
+                    alt="Havan Kund"
+                  />
+                </div>
+
+                {/* Layer 5: Foreground Floral */}
+                <motion.img
+                  initial={{ opacity: 0, y: "8%" }}
+                  whileInView={{ opacity: 0.85, y: "0%", transition: { duration: 2.5, ease: "easeOut", delay: 2.8 } }}
+                  viewport={{ once: true }}
+                  src={ASSETS.mandapFloral}
+                  className="absolute -bottom-[8%] left-1/2 -translate-x-1/2 w-[82%] h-auto object-contain object-bottom pointer-events-none z-40"
+                  alt="Floral Foreground"
+                />
+
+            </div>
+        </div>
       </section>
 
     </main>
