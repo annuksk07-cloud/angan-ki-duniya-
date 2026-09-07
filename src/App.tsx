@@ -464,25 +464,27 @@ export default function App() {
           className="relative z-10 max-w-[90%] sm:max-w-xl md:max-w-2xl mx-auto flex flex-col items-center justify-center px-4 sm:px-6 py-8 sm:py-12 my-auto"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.5, delayChildren: 0.2 } } }}
+          viewport={{ once: true, amount: 0.35 }}
         >
-          <motion.h2 variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#5A1520] text-[28px] sm:text-4xl md:text-5xl font-tiro mb-6 sm:mb-8 drop-shadow-sm">सादर आमंत्रण</motion.h2>
-          <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 0.7, transition: { duration: 1.5, ease: "easeOut" } } }} className="w-12 sm:w-16 h-[1px] bg-[#B78B4A] mb-8 sm:mb-12" />
-          <motion.p variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#4A2014] font-noto text-[16px] sm:text-[19px] md:text-[21px] leading-[2] font-medium w-full mx-auto">ईश्वर की असीम कृपा एवं परिवारजनों के आशीर्वाद से</motion.p>
-          <motion.div variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#5A1520] text-[26px] sm:text-3xl md:text-4xl block my-8 sm:my-10 font-normal font-amita drop-shadow-md w-full mx-auto">काव्या एवं आदित्य</motion.div>
-          <motion.p variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#4A2014] font-noto text-[16px] sm:text-[19px] md:text-[21px] leading-[2] mb-10 sm:mb-12 font-medium w-full mx-auto">शुभ विवाह के पावन बंधन में बंधने जा रहे हैं।</motion.p>
-          <motion.p variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#4A2014] font-noto text-[15px] sm:text-[18px] md:text-[20px] leading-[2] mb-12 sm:mb-14 w-full mx-auto opacity-95">इस मंगल अवसर पर आप सपरिवार सादर आमंत्रित हैं。<br className="hidden sm:block" />कृपया पधारकर नवदंपति को अपना स्नेह एवं आशीर्वाद प्रदान करें।</motion.p>
-          <motion.p variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }} className="text-[#B78B4A] font-noto text-[16px] sm:text-[19px] md:text-[21px] font-medium italic drop-shadow-sm opacity-90">आपकी उपस्थिति हमारे लिए सौभाग्य होगी।</motion.p>
+          <motion.h2 variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.8, ease: "easeOut", delay: 0.8 } } }} className="text-[#5A1520] text-[28px] sm:text-4xl md:text-5xl font-tiro mb-6 sm:mb-8 drop-shadow-sm">सादर आमंत्रण</motion.h2>
+          <motion.div variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 0.7, scaleX: 1, transition: { duration: 1.6, ease: "easeInOut", delay: 1.4 } } }} className="w-12 sm:w-16 h-[1px] bg-[#B78B4A] mb-8 sm:mb-12 origin-center" />
+          <motion.p variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.6, ease: "easeOut", delay: 1.8 } } }} className="text-[#4A2014] font-noto text-[16px] sm:text-[19px] md:text-[21px] leading-[2] font-medium w-full mx-auto">ईश्वर की असीम कृपा एवं परिवारजनों के आशीर्वाद से</motion.p>
+          <motion.div variants={{ hidden: { opacity: 0, y: 6, scale: 0.98 }, visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 2, ease: "easeOut", delay: 2.3 } } }} className="text-[#5A1520] text-[26px] sm:text-3xl md:text-4xl block my-8 sm:my-10 font-normal font-amita drop-shadow-md w-full mx-auto">काव्या एवं आदित्य</motion.div>
+          <motion.p variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.6, ease: "easeOut", delay: 2.8 } } }} className="text-[#4A2014] font-noto text-[16px] sm:text-[19px] md:text-[21px] leading-[2] mb-10 sm:mb-12 font-medium w-full mx-auto">शुभ विवाह के पावन बंधन में बंधने जा रहे हैं।</motion.p>
+          <motion.p variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.6, ease: "easeOut", delay: 3.2 } } }} className="text-[#4A2014] font-noto text-[15px] sm:text-[18px] md:text-[20px] leading-[2] mb-12 sm:mb-14 w-full mx-auto opacity-95">इस मंगल अवसर पर आप सपरिवार सादर आमंत्रित हैं。<br className="hidden sm:block" />कृपया पधारकर नवदंपति को अपना स्नेह एवं आशीर्वाद प्रदान करें।</motion.p>
+          <motion.p variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.8, ease: "easeOut", delay: 4.2 } } }} className="text-[#B78B4A] font-noto text-[16px] sm:text-[19px] md:text-[21px] font-medium italic drop-shadow-sm opacity-90">आपकी उपस्थिति हमारे लिए सौभाग्य होगी।</motion.p>
         </motion.div>
       </section>
 
       {/* NEW SECTION: FAMILY BLESSING */}
       <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-10 sm:py-16 md:py-24 lg:py-28 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
-        <img 
+        <motion.img 
+          initial={{ scale: 1.05, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1, transition: { duration: 3, ease: "easeOut" } }}
+          viewport={{ once: true, amount: 0.1 }}
           src={ASSETS.familyBg} 
           alt="Family Background" 
-          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none" 
+          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
         />
 
         <motion.div
@@ -494,7 +496,7 @@ export default function App() {
             hidden: { opacity: 0 },
             visible: {
               opacity: 1,
-              transition: { staggerChildren: 0.4, delayChildren: 0.2 }
+              transition: { staggerChildren: 0.35, delayChildren: 0.2 }
             }
           }}
         >
@@ -535,19 +537,16 @@ export default function App() {
             
             {/* Bride Family (Left) */}
             <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
+              variants={{ hidden: { opacity: 0, x: -15 }, visible: { opacity: 1, x: 0, transition: { duration: 1.6, ease: "easeOut" } } }}
               className="flex-1 flex flex-col items-center relative w-full px-1 sm:px-8 py-2 family-col"
             >
-              <div className="absolute top-0 bottom-0 left-[-6px] sm:left-[-10px] md:left-0 pointer-events-none flex items-center justify-start opacity-80 z-0 botanical-left-wrapper">
+              <motion.div variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 0.8, scale: 1, transition: { duration: 2, ease: "easeOut", delay: 1.5 } } }} className="absolute top-0 bottom-0 left-[-6px] sm:left-[-10px] md:left-0 pointer-events-none flex items-center justify-start z-0 botanical-left-wrapper">
                 <img 
                   src={ASSETS.botanicalLineage} 
                   className="h-[85%] sm:h-[90%] w-auto object-contain object-left drop-shadow-[0_2px_4px_rgba(90,21,32,0.15)] botanical-left" 
                   alt="" 
                 />
-              </div>
+              </motion.div>
               
               <h3 className="text-[#5A1520] text-[clamp(18px,4.5vw,28px)] font-amita mb-3 sm:mb-6 drop-shadow-sm text-center relative z-10 pl-6 sm:pl-0 family-col-title">वधू पक्ष</h3>
               <div className="text-[#4A2014] font-noto space-y-1 sm:space-y-3 text-[clamp(12px,2.8vw,18px)] font-medium leading-snug sm:leading-relaxed text-center w-full relative z-10 pl-6 sm:pl-0 family-col-text">
@@ -559,10 +558,7 @@ export default function App() {
 
             {/* Sacred Thread (Middle) - Mobile & Desktop */}
             <motion.div 
-              initial={{ opacity: 0, scaleY: 0.8 }}
-              whileInView={{ opacity: 1, scaleY: 1 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 1.5, ease: "easeOut" }}
+              variants={{ hidden: { opacity: 0, scaleY: 0 }, visible: { opacity: 1, scaleY: 1, transition: { duration: 1.8, ease: "easeInOut" } } }}
               className="flex w-6 sm:w-12 items-center justify-center relative z-10 py-4 sm:py-6 origin-top sacred-thread-wrapper"
             >
               <motion.img
@@ -577,19 +573,16 @@ export default function App() {
 
             {/* Groom Family (Right) */}
             <motion.div 
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 1.2, ease: "easeOut" }}
+              variants={{ hidden: { opacity: 0, x: 15 }, visible: { opacity: 1, x: 0, transition: { duration: 1.6, ease: "easeOut" } } }}
               className="flex-1 flex flex-col items-center relative w-full px-1 sm:px-8 py-2 family-col"
             >
-              <div className="absolute top-0 bottom-0 right-[-6px] sm:right-[-10px] md:right-0 pointer-events-none flex items-center justify-end opacity-80 scale-x-[-1] z-0 botanical-right-wrapper">
+              <motion.div variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 0.8, scale: 1, transition: { duration: 2, ease: "easeOut", delay: 1.5 } } }} className="absolute top-0 bottom-0 right-[-6px] sm:right-[-10px] md:right-0 pointer-events-none flex items-center justify-end scale-x-[-1] z-0 botanical-right-wrapper">
                 <img 
                   src={ASSETS.botanicalLineage} 
                   className="h-[85%] sm:h-[90%] w-auto object-contain object-left drop-shadow-[0_2px_4px_rgba(90,21,32,0.15)] botanical-right" 
                   alt="" 
                 />
-              </div>
+              </motion.div>
 
               <h3 className="text-[#5A1520] text-[clamp(18px,4.5vw,28px)] font-amita mb-3 sm:mb-6 drop-shadow-sm text-center relative z-10 pr-6 sm:pr-0 family-col-title">वर पक्ष</h3>
               <div className="text-[#4A2014] font-noto space-y-1 sm:space-y-3 text-[clamp(12px,2.8vw,18px)] font-medium leading-snug sm:leading-relaxed text-center w-full relative z-10 pr-6 sm:pr-0 family-col-text">
@@ -604,10 +597,13 @@ export default function App() {
 
       {/* NEW SECTION: EVENTS */}
       <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
-        <img 
+        <motion.img 
+          initial={{ scale: 1.05, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1, transition: { duration: 3, ease: "easeOut" } }}
+          viewport={{ once: true, amount: 0.1 }}
           src={ASSETS.familyBg} 
           alt="Events Background" 
-          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none" 
+          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
         />
 
         <motion.div
@@ -643,22 +639,22 @@ export default function App() {
           <div className="w-full relative grid grid-cols-2 md:grid-cols-2 gap-x-12 gap-y-12 sm:gap-y-16 mt-2 mangal-grid">
             
             {/* Subtle cross-divider for desktop */}
-            <div className="hidden lg:block absolute inset-0 pointer-events-none z-0 mangal-connector">
-              <div className="absolute top-1/2 left-[5%] right-[5%] h-[1px] bg-gradient-to-r from-transparent via-[#B78B4A] to-transparent opacity-30"></div>
-              <div className="absolute left-1/2 top-[5%] bottom-[5%] w-[1px] bg-gradient-to-b from-transparent via-[#B78B4A] to-transparent opacity-30"></div>
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rotate-45 border border-[#B78B4A] opacity-40"></div>
-            </div>
+            <motion.div variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 2, ease: "easeInOut" } } }} className="hidden lg:block absolute inset-0 pointer-events-none z-0 mangal-connector">
+              <motion.div variants={{ hidden: { scaleX: 0 }, visible: { scaleX: 1, transition: { duration: 2, ease: "easeInOut" } } }} className="absolute top-1/2 left-[5%] right-[5%] h-[1px] bg-gradient-to-r from-transparent via-[#B78B4A] to-transparent opacity-30 origin-center"></motion.div>
+              <motion.div variants={{ hidden: { scaleY: 0 }, visible: { scaleY: 1, transition: { duration: 2, ease: "easeInOut" } } }} className="absolute left-1/2 top-[5%] bottom-[5%] w-[1px] bg-gradient-to-b from-transparent via-[#B78B4A] to-transparent opacity-30 origin-center"></motion.div>
+              <motion.div variants={{ hidden: { scale: 0, rotate: 0 }, visible: { scale: 1, rotate: 45, transition: { duration: 1.5, ease: "easeOut", delay: 1 } } }} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 border border-[#B78B4A] opacity-40"></motion.div>
+            </motion.div>
 
             {/* Event 1: Haldi */}
             <motion.div 
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.3 } } }}
+              variants={{ hidden: { opacity: 0, x: -12, y: -12 }, visible: { opacity: 1, x: 0, y: 0, transition: { duration: 1.6, ease: "easeOut" } } }}
               className="flex flex-col items-center text-center relative z-10"
             >
               <motion.img 
-                variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}
+                variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 1.4, ease: "easeOut" } } }}
                 src={ASSETS.haldi} alt="हल्दी" className="w-24 sm:w-32 h-auto object-contain mb-3 sm:mb-4 drop-shadow-sm mangal-event-img mangal-haldi" 
               />
-              <motion.div variants={{ hidden: { opacity: 0, y: 5 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}>
+              <motion.div variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.4, ease: "easeOut" } } }}>
                 <h3 className="text-[#5A1520] text-[clamp(22px,6vw,30px)] font-amita mb-1 sm:mb-2 drop-shadow-sm mangal-event-title">हल्दी</h3>
                 <div className="text-[#4A2014] font-noto leading-snug space-y-0.5 mangal-event-text">
                   <p className="text-[clamp(15px,4vw,18px)] font-medium">10 दिसंबर 2026</p>
@@ -673,14 +669,14 @@ export default function App() {
 
             {/* Event 2: Mehndi */}
             <motion.div 
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.3 } } }}
+              variants={{ hidden: { opacity: 0, x: 12, y: -12 }, visible: { opacity: 1, x: 0, y: 0, transition: { duration: 1.6, ease: "easeOut" } } }}
               className="flex flex-col items-center text-center relative z-10"
             >
               <motion.img 
-                variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}
+                variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 1.4, ease: "easeOut" } } }}
                 src={ASSETS.mehndi} alt="मेहंदी" className="w-20 sm:w-28 h-auto object-contain mb-3 sm:mb-4 drop-shadow-sm mangal-event-img mangal-mehndi" 
               />
-              <motion.div variants={{ hidden: { opacity: 0, y: 5 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}>
+              <motion.div variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.4, ease: "easeOut" } } }}>
                 <h3 className="text-[#5A1520] text-[clamp(22px,6vw,30px)] font-amita mb-1 sm:mb-2 drop-shadow-sm mangal-event-title">मेहंदी</h3>
                 <div className="text-[#4A2014] font-noto leading-snug space-y-0.5 mangal-event-text">
                   <p className="text-[clamp(15px,4vw,18px)] font-medium">10 दिसंबर 2026</p>
@@ -695,14 +691,14 @@ export default function App() {
 
             {/* Event 3: Sangeet */}
             <motion.div 
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.3 } } }}
+              variants={{ hidden: { opacity: 0, x: -12, y: 12 }, visible: { opacity: 1, x: 0, y: 0, transition: { duration: 1.6, ease: "easeOut" } } }}
               className="flex flex-col items-center text-center relative z-10"
             >
               <motion.img 
-                variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}
+                variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 1.4, ease: "easeOut" } } }}
                 src={ASSETS.sangeet} alt="संगीत संध्या" className="w-28 sm:w-36 h-auto object-contain mb-3 sm:mb-4 drop-shadow-sm mangal-event-img mangal-sangeet" 
               />
-              <motion.div variants={{ hidden: { opacity: 0, y: 5 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}>
+              <motion.div variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.4, ease: "easeOut" } } }}>
                 <h3 className="text-[#5A1520] text-[clamp(22px,6vw,30px)] font-amita mb-1 sm:mb-2 drop-shadow-sm mangal-event-title">संगीत संध्या</h3>
                 <div className="text-[#4A2014] font-noto leading-snug space-y-0.5 mangal-event-text">
                   <p className="text-[clamp(15px,4vw,18px)] font-medium">11 दिसंबर 2026</p>
@@ -717,14 +713,14 @@ export default function App() {
 
             {/* Event 4: Vivah */}
             <motion.div 
-              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.3 } } }}
+              variants={{ hidden: { opacity: 0, x: 12, y: 12 }, visible: { opacity: 1, x: 0, y: 0, transition: { duration: 1.6, ease: "easeOut" } } }}
               className="flex flex-col items-center text-center relative z-10"
             >
               <motion.img 
-                variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}
+                variants={{ hidden: { opacity: 0, scale: 0.95 }, visible: { opacity: 1, scale: 1, transition: { duration: 1.4, ease: "easeOut" } } }}
                 src={ASSETS.vivah} alt="विवाह एवं फेरे" className="w-32 sm:w-40 h-auto object-contain mb-3 sm:mb-4 drop-shadow-sm mangal-event-img mangal-vivah" 
               />
-              <motion.div variants={{ hidden: { opacity: 0, y: 5 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}>
+              <motion.div variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.4, ease: "easeOut" } } }}>
                 <h3 className="text-[#5A1520] text-[clamp(22px,6vw,30px)] font-amita mb-1 sm:mb-2 drop-shadow-sm mangal-event-title">विवाह एवं फेरे</h3>
                 <div className="text-[#4A2014] font-noto leading-snug space-y-0.5 mangal-event-text">
                   <p className="text-[clamp(15px,4vw,18px)] font-medium">12 दिसंबर 2026</p>
