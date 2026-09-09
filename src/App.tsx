@@ -26,7 +26,9 @@ const ASSETS = {
   sacredSmoke: "https://lh3.googleusercontent.com/d/12PWDx2sv3xkHnfi3ndkWoPKDJbGTglzB",
   mandapFloral: "https://lh3.googleusercontent.com/d/1WiMfFxLJb-kEs3L2nEHPwnaGL4Uz4Gr1",
   jasmineStrand: "https://lh3.googleusercontent.com/d/10uBJFi5cQvmwoLT63GIUnZt8SaEYXd9S",
-  softGlow: "https://lh3.googleusercontent.com/d/1CeAhYB_3w1lTxo7973TPYLFDpqwKBEDT"
+  softGlow: "https://lh3.googleusercontent.com/d/1CeAhYB_3w1lTxo7973TPYLFDpqwKBEDT",
+  coupleStoryFrame: "https://lh3.googleusercontent.com/d/1Xiijjt2BmuZ5xjjsnqA2TvOb3EEbP1u0",
+  botanicalAccent: "https://lh3.googleusercontent.com/d/1qsHD_Y_OrpJihsq4vmurPfWldPNH3ac1"
 };
 
 const itemVariants = {
@@ -891,6 +893,89 @@ export default function App() {
 
             </div>
         </div>
+      </section>
+
+      {/* SECTION 7: TWO HEARTS • ONE JOURNEY */}
+      <section className="relative w-full flex flex-col items-center justify-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
+        
+        {/* Master background - matching approved sections exactly */}
+        <motion.img 
+          initial={{ scale: 1.05, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1, transition: { duration: 3, ease: "easeOut" } }}
+          viewport={{ once: true, amount: 0.1 }}
+          src={ASSETS.familyBg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+        />
+
+        {/* Subtle background botanical accent */}
+        <motion.img 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 0.15, transition: { duration: 1.2, ease: "easeOut", delay: 2.0 } }}
+          viewport={{ once: true, amount: 0.2 }}
+          src={ASSETS.botanicalAccent} 
+          alt="" 
+          className="absolute -bottom-[5%] md:bottom-[5%] -right-[15%] md:-right-[5%] w-[80%] md:w-[50%] h-auto object-contain pointer-events-none z-0 rotate-[-10deg]" 
+        />
+
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.25 }}
+          className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row items-center justify-center gap-14 md:gap-16 lg:gap-28 py-0"
+        >
+          {/* Left: Text Content */}
+          <div className="w-full md:w-[45%] flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
+            <motion.h2 
+              variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: "easeOut", delay: 0.4 } } }} 
+              className="text-[#5A1520] text-[28px] sm:text-4xl lg:text-5xl font-tiro mb-5 sm:mb-7 drop-shadow-sm"
+            >
+              दो दिल • एक सफर
+            </motion.h2>
+
+            <motion.div 
+              variants={{ hidden: { scaleX: 0 }, visible: { scaleX: 1, transition: { duration: 1.0, ease: "easeInOut", delay: 0.6 } } }} 
+              className="w-12 sm:w-16 h-[1px] bg-[#B78B4A] mb-7 sm:mb-10 origin-center md:origin-left" 
+            />
+
+            <motion.h3 
+              variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: "easeOut", delay: 0.8 } } }} 
+              className="text-[#4A2014] text-[18px] sm:text-[22px] lg:text-[26px] font-noto font-medium mb-8 sm:mb-12 leading-[1.8] sm:leading-[1.9]"
+            >
+              एक मुलाक़ात से शुरू हुई कहानी,<br className="hidden sm:block" />
+              अब जीवनभर के साथ की ओर बढ़ रही है।
+            </motion.h3>
+
+            <motion.div 
+              variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: "easeOut", delay: 1.2 } } }} 
+              className="text-[#5A1520] text-[26px] sm:text-3xl lg:text-4xl font-amita mb-4 sm:mb-6 drop-shadow-md"
+            >
+              काव्या & आदित्य
+            </motion.div>
+
+            <motion.p 
+              variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: "easeOut", delay: 2.4 } } }} 
+              className="text-[#4A2014] font-noto text-[15px] sm:text-[17px] lg:text-[19px] leading-loose sm:leading-[2] opacity-90 max-w-[90%] md:max-w-none mx-auto md:mx-0"
+            >
+              वक्त के साथ हमारा यह सफर और भी खूबसूरत होता गया। हर हँसी, हर बातचीत और हर छोटे-बड़े लम्हे ने हमें एक-दूसरे के करीब ला दिया। अब हम अपने इस नए सफर की शुरुआत करने जा रहे हैं, जहाँ प्यार, विश्वास और एक-दूसरे का साथ हमेशा रहेगा।
+            </motion.p>
+          </div>
+
+          {/* Right: Couple Frame Visual */}
+          <motion.div 
+            variants={{ hidden: { opacity: 0, scale: 0.98 }, visible: { opacity: 1, scale: 1, transition: { duration: 1.2, ease: "easeOut", delay: 1.6 } } }}
+            className="w-[85%] sm:w-[65%] md:w-[45%] max-w-[450px] flex justify-center items-center order-1 md:order-2 relative aspect-[4/5]"
+          >
+            {/* Subtle glow behind the frame */}
+            <div className="absolute inset-0 bg-[#B78B4A] opacity-[0.08] blur-3xl rounded-full scale-[0.8] z-0 pointer-events-none"></div>
+            
+            <img 
+              src={ASSETS.coupleStoryFrame} 
+              alt="" 
+              className="absolute inset-0 w-full h-full object-contain drop-shadow-xl z-10"
+            />
+          </motion.div>
+        </motion.div>
       </section>
 
     </main>
