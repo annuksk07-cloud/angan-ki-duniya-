@@ -81,14 +81,14 @@ const CountdownSection = () => {
   }, []);
 
   return (
-    <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
+    <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-[100vh] overflow-hidden">
       <motion.img 
         initial={{ scale: 1.05, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1, transition: { duration: 3, ease: "easeOut" } }}
         viewport={{ once: true, amount: 0.1 }}
         src={ASSETS.familyBg}
         alt=""
-        className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+        className="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none origin-center" 
       />
       <div className="relative z-10 w-full max-w-[90%] sm:max-w-4xl lg:max-w-6xl mx-auto flex flex-col items-center">
         <motion.div
@@ -200,14 +200,14 @@ const RsvpSection = () => {
   );
 
   return (
-    <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
+    <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-[100vh] overflow-hidden">
       <motion.img 
         initial={{ scale: 1.05, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1, transition: { duration: 3, ease: "easeOut" } }}
         viewport={{ once: true, amount: 0.1 }}
         src={ASSETS.familyBg}
         alt=""
-        className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+        className="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none origin-center" 
       />
       
       <div className="relative z-10 w-full max-w-[90%] sm:max-w-xl md:max-w-2xl mx-auto flex flex-col items-center">
@@ -803,14 +803,14 @@ export default function App() {
       </section>
 
       {/* NEW SECTION: FAMILY BLESSING */}
-      <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-10 sm:py-16 md:py-24 lg:py-28 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
+      <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-10 sm:py-16 md:py-24 lg:py-28 min-h-[100svh] md:min-h-[82svh] lg:min-h-[100vh] overflow-hidden">
         <motion.img 
           initial={{ scale: 1.05, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1, transition: { duration: 3, ease: "easeOut" } }}
           viewport={{ once: true, amount: 0.1 }}
           src={ASSETS.familyBg} 
           alt="Family Background" 
-          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none origin-center" 
         />
 
         <motion.div
@@ -922,14 +922,14 @@ export default function App() {
       </section>
 
       {/* NEW SECTION: EVENTS */}
-      <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
+      <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-[100vh] overflow-hidden">
         <motion.img 
           initial={{ scale: 1.05, opacity: 0 }}
           whileInView={{ scale: 1, opacity: 1, transition: { duration: 3, ease: "easeOut" } }}
           viewport={{ once: true, amount: 0.1 }}
           src={ASSETS.familyBg} 
           alt="Events Background" 
-          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none origin-center" 
         />
 
         <motion.div
@@ -1069,7 +1069,7 @@ export default function App() {
           whileInView={{ scale: 1.02, transition: { duration: 20, ease: "linear" } }}
           src={ASSETS.familyBg} 
           alt="Vivah Background" 
-          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none origin-center" 
         />
 
         {/* Heading & Subtitle */}
@@ -1220,7 +1220,7 @@ export default function App() {
       </section>
 
       {/* SECTION 7: TWO LIVES • ONE CONFLUENCE */}
-      <section className="relative z-10 w-full flex flex-col items-center justify-center bg-[#F8F0DF] py-16 sm:py-20 md:py-12 lg:py-16 min-h-0 md:min-h-[82vh] overflow-hidden">
+      <section className="relative z-10 w-full flex flex-col items-center justify-center bg-[#F8F0DF] py-16 sm:py-20 md:py-12 lg:py-16 min-h-0 md:min-h-[82vh] lg:min-h-[100vh] overflow-hidden">
         
         {/* Master background - matching approved sections exactly */}
         <motion.img 
@@ -1229,7 +1229,7 @@ export default function App() {
           viewport={{ once: true, amount: 0.1 }}
           src={ASSETS.familyBg}
           alt=""
-          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none origin-center" 
         />
 
         {/* Subtle background botanical accent */}
@@ -1370,7 +1370,7 @@ export default function App() {
           viewport={{ once: true, amount: 0.1 }}
           src={ASSETS.familyBg}
           alt=""
-          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none origin-center" 
         />
         
         {/* Content Container */}
@@ -1589,7 +1589,7 @@ export default function App() {
 
     
       {/* SECTION 10: VENUE */}
-      <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
+      <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-[100vh] overflow-hidden">
         {/* Master background */}
         <motion.img 
           initial={{ scale: 1.05, opacity: 0 }}
@@ -1597,7 +1597,7 @@ export default function App() {
           viewport={{ once: true, amount: 0.1 }}
           src={ASSETS.familyBg}
           alt=""
-          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none origin-center" 
         />
         
         {/* Venue Content */}
@@ -1684,7 +1684,7 @@ export default function App() {
           viewport={{ once: true, amount: 0.1 }}
           src={ASSETS.familyBg}
           alt=""
-          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center opacity-90" 
+          className="absolute inset-0 w-full h-full object-cover object-center z-0 pointer-events-none origin-center opacity-90" 
         />
         
         {/* Warm Overlay to make it feel settled */}
