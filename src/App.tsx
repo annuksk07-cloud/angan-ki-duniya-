@@ -28,7 +28,12 @@ const ASSETS = {
   jasmineStrand: "https://lh3.googleusercontent.com/d/10uBJFi5cQvmwoLT63GIUnZt8SaEYXd9S",
   softGlow: "https://lh3.googleusercontent.com/d/1CeAhYB_3w1lTxo7973TPYLFDpqwKBEDT",
   coupleStoryFrame: "https://lh3.googleusercontent.com/d/1Xiijjt2BmuZ5xjjsnqA2TvOb3EEbP1u0",
-  botanicalAccent: "https://lh3.googleusercontent.com/d/1qsHD_Y_OrpJihsq4vmurPfWldPNH3ac1"
+  botanicalAccent: "https://lh3.googleusercontent.com/d/1qsHD_Y_OrpJihsq4vmurPfWldPNH3ac1",
+  coupleKavya: "https://lh3.googleusercontent.com/d/1WDsWUL8M1vpwyibNMPHR5zCqwLN8D2ei",
+  coupleAditya: "https://lh3.googleusercontent.com/d/1IXlB99Kikpfpj_opzPu096XUcYbJAuga",
+  story1: "https://lh3.googleusercontent.com/d/1vTwBKa8ustS64jHmBRtcnYTAekJwP_UX",
+  story2: "https://lh3.googleusercontent.com/d/1fFmwiZrL0SSl-576upVVz53GSUiIZ3sn",
+  story3: "https://lh3.googleusercontent.com/d/1bka8-pWhqJo3jegtL6d00_PtQCEG3EGW"
 };
 
 const itemVariants = {
@@ -38,6 +43,95 @@ const itemVariants = {
     y: 0, 
     transition: { duration: 1.2, ease: [0.2, 0.65, 0.3, 0.9] } 
   }
+};
+
+
+const CountdownSection = () => {
+  const targetDate = new Date("2026-12-11T18:30:00.000Z").getTime();
+  const [timeLeft, setTimeLeft] = useState({
+    days: 0,
+    hours: 0,
+    minutes: 0,
+    seconds: 0,
+    isOver: false
+  });
+
+  useEffect(() => {
+    const updateCountdown = () => {
+      const now = Date.now();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0, isOver: true });
+        return;
+      }
+
+      setTimeLeft({
+        days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+        minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)),
+        seconds: Math.floor((distance % (1000 * 60)) / 1000),
+        isOver: false
+      });
+    };
+
+    updateCountdown();
+    const interval = setInterval(updateCountdown, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
+      <motion.img 
+        initial={{ scale: 1.05, opacity: 0 }}
+        whileInView={{ scale: 1, opacity: 1, transition: { duration: 3, ease: "easeOut" } }}
+        viewport={{ once: true, amount: 0.1 }}
+        src={ASSETS.familyBg}
+        alt=""
+        className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+      />
+      <div className="relative z-10 w-full max-w-[90%] sm:max-w-4xl lg:max-w-6xl mx-auto flex flex-col items-center">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{
+            hidden: { opacity: 0, y: 15 },
+            visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } }
+          }}
+          className="flex flex-col items-center text-center w-full"
+        >
+          <h2 className="text-[#5A1520] text-[28px] sm:text-4xl md:text-5xl font-tiro mb-6 sm:mb-8 drop-shadow-sm">शुभ विवाह</h2>
+          <div className="w-12 sm:w-16 h-[1px] bg-[#B78B4A] mb-8 sm:mb-12 origin-center" />
+          <div className="text-[#5A1520] text-[26px] sm:text-3xl md:text-4xl font-normal font-amita drop-shadow-md mb-8 sm:mb-10">काव्या & आदित्य</div>
+          <p className="text-[#B78B4A] font-noto text-[18px] sm:text-[22px] md:text-[24px] font-medium tracking-widest drop-shadow-sm mb-12 sm:mb-16">12 • 12 • 2026</p>
+          <p className="text-[#4A2014] font-noto text-[16px] sm:text-[19px] md:text-[21px] leading-[2] font-medium mb-10 sm:mb-12">
+            {timeLeft.isOver ? 'शुभ विवाह का मंगल दिवस आ गया है।' : 'हमारे शुभ मिलन में अब…'}
+          </p>
+
+          {!timeLeft.isOver && (
+            <div className="flex items-center justify-center gap-4 sm:gap-8 md:gap-12 w-full">
+              {[
+                { label: 'Days', value: timeLeft.days },
+                { label: 'Hours', value: timeLeft.hours },
+                { label: 'Minutes', value: timeLeft.minutes },
+                { label: 'Seconds', value: timeLeft.seconds },
+              ].map((item, idx) => (
+                <div key={idx} className="flex flex-col items-center">
+                  <div className="text-[#5A1520] text-3xl sm:text-4xl md:text-5xl font-tiro drop-shadow-sm mb-2 min-w-[56px] sm:min-w-[72px] md:min-w-[90px]">
+                    {String(item.value).padStart(2, '0')}
+                  </div>
+                  <div className="text-[#B78B4A] font-noto text-[12px] sm:text-[14px] md:text-[16px] tracking-widest font-medium uppercase">
+                    {item.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </motion.div>
+      </div>
+    </section>
+  );
 };
 
 export default function App() {
@@ -90,6 +184,19 @@ export default function App() {
   };
   const [rightHooked, setRightHooked] = useState(false);
   const [showHeroContent, setShowHeroContent] = useState(false);
+
+  // Mobile Storybook State
+  const [storyPage, setStoryPage] = useState(0);
+  const [storyDirection, setStoryDirection] = useState(0);
+
+  const paginateStory = (newDirection: number) => {
+    setStoryPage((prev) => {
+      const next = prev + newDirection;
+      if (next < 0 || next > 2) return prev;
+      setStoryDirection(newDirection);
+      return next;
+    });
+  };
 
   const isOpen = leftHooked && rightHooked;
 
@@ -385,6 +492,9 @@ export default function App() {
 
       
             </section>
+
+      {/* SECTION 2: LIVE WEDDING COUNTDOWN */}
+      <CountdownSection />
 
       {/* NEW SECTION: INVITATION MESSAGE */}
       <section ref={invRef} className="relative z-10 w-full min-h-[100dvh] flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 shadow-[0_-10px_30px_rgba(0,0,0,0.15)] tablet-sadar-section">
@@ -895,8 +1005,8 @@ export default function App() {
         </div>
       </section>
 
-      {/* SECTION 7: TWO HEARTS • ONE JOURNEY */}
-      <section className="relative w-full flex flex-col items-center justify-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
+      {/* SECTION 7: TWO LIVES • ONE CONFLUENCE */}
+      <section className="relative z-10 w-full flex flex-col items-center justify-center bg-[#F8F0DF] py-16 sm:py-20 md:py-12 lg:py-16 min-h-0 md:min-h-[82vh] overflow-hidden">
         
         {/* Master background - matching approved sections exactly */}
         <motion.img 
@@ -911,71 +1021,356 @@ export default function App() {
         {/* Subtle background botanical accent */}
         <motion.img 
           initial={{ opacity: 0 }}
-          whileInView={{ opacity: 0.15, transition: { duration: 1.2, ease: "easeOut", delay: 2.0 } }}
+          whileInView={{ opacity: 0.12, transition: { duration: 1.5, ease: "easeOut", delay: 2.0 } }}
           viewport={{ once: true, amount: 0.2 }}
           src={ASSETS.botanicalAccent} 
           alt="" 
-          className="absolute -bottom-[5%] md:bottom-[5%] -right-[15%] md:-right-[5%] w-[80%] md:w-[50%] h-auto object-contain pointer-events-none z-0 rotate-[-10deg]" 
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[85%] md:w-[60%] lg:w-[45%] h-auto object-contain pointer-events-none z-0 opacity-10" 
         />
 
         <motion.div
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.25 }}
-          className="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-12 flex flex-col md:flex-row items-center justify-center gap-14 md:gap-16 lg:gap-28 py-0"
+          viewport={{ once: true, amount: 0.15 }}
+          className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-12 flex flex-col items-center text-center py-0"
         >
-          {/* Left: Text Content */}
-          <div className="w-full md:w-[45%] flex flex-col items-center md:items-start text-center md:text-left order-2 md:order-1">
-            <motion.h2 
-              variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: "easeOut", delay: 0.4 } } }} 
-              className="text-[#5A1520] text-[28px] sm:text-4xl lg:text-5xl font-tiro mb-5 sm:mb-7 drop-shadow-sm"
-            >
-              दो दिल • एक सफर
-            </motion.h2>
+          {/* Top Text Content */}
+          <motion.h2 
+            variants={{ hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut", delay: 0.2 } } }} 
+            className="text-[#5A1520] text-[28px] sm:text-4xl md:text-5xl font-tiro mb-3 sm:mb-5 drop-shadow-sm"
+          >
+            दो जीवन • एक संगम
+          </motion.h2>
 
+          <motion.img
+            variants={{ hidden: { opacity: 0, scaleX: 0 }, visible: { opacity: 1, scaleX: 1, transition: { duration: 1.5, ease: "easeOut", delay: 0.4 } } }}
+            src={ASSETS.goldDivider}
+            alt=""
+            className="w-40 sm:w-56 md:w-72 h-auto mb-8 sm:mb-12 origin-center opacity-90 drop-shadow-sm"
+          />
+
+          {/* Portrait Frames (Side-by-side on all devices) */}
+          <div className="w-full flex flex-row items-center justify-center gap-1 sm:gap-6 md:gap-12 lg:gap-16 mb-10 sm:mb-16">
+            
+            {/* Bride Frame */}
             <motion.div 
-              variants={{ hidden: { scaleX: 0 }, visible: { scaleX: 1, transition: { duration: 1.0, ease: "easeInOut", delay: 0.6 } } }} 
-              className="w-12 sm:w-16 h-[1px] bg-[#B78B4A] mb-7 sm:mb-10 origin-center md:origin-left" 
-            />
-
-            <motion.h3 
-              variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: "easeOut", delay: 0.8 } } }} 
-              className="text-[#4A2014] text-[18px] sm:text-[22px] lg:text-[26px] font-noto font-medium mb-8 sm:mb-12 leading-[1.8] sm:leading-[1.9]"
+              variants={{ hidden: { opacity: 0, x: -15 }, visible: { opacity: 1, x: 0, transition: { duration: 1.4, ease: "easeOut", delay: 0.8 } } }}
+              className="flex flex-col items-center w-[46%] sm:w-[40%] md:w-[38%] max-w-[340px]"
             >
-              एक मुलाक़ात से शुरू हुई कहानी,<br className="hidden sm:block" />
-              अब जीवनभर के साथ की ओर बढ़ रही है।
-            </motion.h3>
-
-            <motion.div 
-              variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: "easeOut", delay: 1.2 } } }} 
-              className="text-[#5A1520] text-[26px] sm:text-3xl lg:text-4xl font-amita mb-4 sm:mb-6 drop-shadow-md"
-            >
-              काव्या & आदित्य
+              <div 
+                className="relative w-full flex items-center justify-center mb-3 sm:mb-6"
+                style={{ aspectRatio: "1134/1387" }}
+              >
+                {/* Glow */}
+                <div className="absolute inset-0 bg-[#B78B4A] opacity-[0.06] blur-2xl rounded-full scale-[0.8] z-0 pointer-events-none"></div>
+                
+                {/* Image Placeholder Container for Bride */}
+                <div 
+                  className="absolute overflow-hidden rounded-t-full z-0 flex items-center justify-center"
+                  style={{ top: "17.4%", bottom: "9.3%", left: "27.5%", right: "27.6%" }}
+                >
+                   <img src={ASSETS.coupleKavya} alt="काव्या" className="w-full h-full object-cover object-center" />
+                </div>
+                
+                {/* Frame */}
+                <img 
+                  src={ASSETS.coupleStoryFrame} 
+                  alt="" 
+                  className="absolute inset-0 w-full h-full object-contain drop-shadow-lg z-10"
+                />
+              </div>
+              <h3 className="text-[#5A1520] text-xl sm:text-2xl md:text-3xl font-amita drop-shadow-sm">काव्या</h3>
             </motion.div>
 
-            <motion.p 
-              variants={{ hidden: { opacity: 0, y: 6 }, visible: { opacity: 1, y: 0, transition: { duration: 1.0, ease: "easeOut", delay: 2.4 } } }} 
-              className="text-[#4A2014] font-noto text-[15px] sm:text-[17px] lg:text-[19px] leading-loose sm:leading-[2] opacity-90 max-w-[90%] md:max-w-none mx-auto md:mx-0"
+            {/* Tiny Antique-Gold Connector */}
+            <motion.div
+              variants={{ hidden: { opacity: 0, scale: 0.5 }, visible: { opacity: 0.7, scale: 1, transition: { duration: 1.2, ease: "easeOut", delay: 1.4 } } }}
+              className="flex flex-col items-center justify-center px-1 sm:px-2 z-10"
             >
-              वक्त के साथ हमारा यह सफर और भी खूबसूरत होता गया। हर हँसी, हर बातचीत और हर छोटे-बड़े लम्हे ने हमें एक-दूसरे के करीब ला दिया। अब हम अपने इस नए सफर की शुरुआत करने जा रहे हैं, जहाँ प्यार, विश्वास और एक-दूसरे का साथ हमेशा रहेगा।
-            </motion.p>
+              <div className="w-1.5 h-1.5 sm:w-2.5 sm:h-2.5 rotate-45 bg-[#B78B4A] opacity-70 drop-shadow-sm"></div>
+            </motion.div>
+
+            {/* Groom Frame */}
+            <motion.div 
+              variants={{ hidden: { opacity: 0, x: 15 }, visible: { opacity: 1, x: 0, transition: { duration: 1.4, ease: "easeOut", delay: 1.1 } } }}
+              className="flex flex-col items-center w-[46%] sm:w-[40%] md:w-[38%] max-w-[340px]"
+            >
+              <div 
+                className="relative w-full flex items-center justify-center mb-3 sm:mb-6"
+                style={{ aspectRatio: "1134/1387" }}
+              >
+                {/* Glow */}
+                <div className="absolute inset-0 bg-[#B78B4A] opacity-[0.06] blur-2xl rounded-full scale-[0.8] z-0 pointer-events-none"></div>
+                
+                {/* Image Placeholder Container for Groom */}
+                <div 
+                  className="absolute overflow-hidden rounded-t-full z-0 flex items-center justify-center"
+                  style={{ top: "17.4%", bottom: "9.3%", left: "27.5%", right: "27.6%" }}
+                >
+                   <img src={ASSETS.coupleAditya} alt="आदित्य" className="w-full h-full object-cover object-[center_15%]" />
+                </div>
+                
+                {/* Frame - Mirrored for visual balance */}
+                <img 
+                  src={ASSETS.coupleStoryFrame} 
+                  alt="" 
+                  className="absolute inset-0 w-full h-full object-contain drop-shadow-lg z-10 scale-x-[-1]"
+                />
+              </div>
+              <h3 className="text-[#5A1520] text-xl sm:text-2xl md:text-3xl font-amita drop-shadow-sm">आदित्य</h3>
+            </motion.div>
           </div>
 
-          {/* Right: Couple Frame Visual */}
+          {/* Bottom Text */}
           <motion.div 
-            variants={{ hidden: { opacity: 0, scale: 0.98 }, visible: { opacity: 1, scale: 1, transition: { duration: 1.2, ease: "easeOut", delay: 1.6 } } }}
-            className="w-[85%] sm:w-[65%] md:w-[45%] max-w-[450px] flex justify-center items-center order-1 md:order-2 relative aspect-[4/5]"
+            variants={{ hidden: { opacity: 0, y: 8 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut", delay: 1.8 } } }}
+            className="flex flex-col items-center w-full"
           >
-            {/* Subtle glow behind the frame */}
-            <div className="absolute inset-0 bg-[#B78B4A] opacity-[0.08] blur-3xl rounded-full scale-[0.8] z-0 pointer-events-none"></div>
+            <div className="text-[#5A1520] text-3xl sm:text-4xl lg:text-5xl font-amita mb-5 sm:mb-7 drop-shadow-sm">
+              काव्या & आदित्य
+            </div>
             
-            <img 
-              src={ASSETS.coupleStoryFrame} 
-              alt="" 
-              className="absolute inset-0 w-full h-full object-contain drop-shadow-xl z-10"
-            />
+            <div className="text-[#4A2014] font-noto text-[15px] sm:text-[17px] md:text-[19px] leading-[1.9] sm:leading-[2] max-w-[95%] md:max-w-2xl mx-auto opacity-90 space-y-4">
+              <p>
+                दो अलग राहों से चलकर,<br className="hidden sm:block" />
+                अब एक ही जीवन-पथ पर साथ चलने की शुरुआत।
+              </p>
+              <p>
+                दो जीवन, दो परिवार और एक नई शुरुआत —<br className="hidden sm:block" />
+                जहाँ साथ केवल आज का नहीं,<br className="hidden sm:block" />
+                पूरे जीवन का वचन बनता है।
+              </p>
+            </div>
           </motion.div>
+
         </motion.div>
+      </section>
+
+      {/* SECTION 8: OUR STORY */}
+      <section className="relative z-10 w-full flex flex-col items-center justify-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 overflow-hidden">
+        
+        {/* Master background - matching approved sections exactly */}
+        <motion.img 
+          initial={{ scale: 1.05, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1, transition: { duration: 3, ease: "easeOut" } }}
+          viewport={{ once: true, amount: 0.1 }}
+          src={ASSETS.familyBg}
+          alt=""
+          className="absolute inset-0 w-full h-full object-fill z-0 pointer-events-none origin-center" 
+        />
+        
+        {/* Content Container */}
+        <div className="relative z-10 w-full max-w-[90%] sm:max-w-4xl lg:max-w-6xl mx-auto flex flex-col items-center">
+          
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={{
+              hidden: { opacity: 0, y: 15 },
+              visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } }
+            }}
+            className="flex flex-col items-center text-center w-full mb-6 sm:mb-16 md:mb-24"
+          >
+            <h2 className="text-[#5A1520] text-3xl sm:text-4xl md:text-5xl font-tiro mb-2 sm:mb-6 drop-shadow-sm">
+              हमारी कहानी
+            </h2>
+            <p className="text-[#4A2014] text-[15px] sm:text-[19px] md:text-[21px] font-noto font-medium leading-[1.7] md:leading-[1.9] max-w-2xl opacity-90">
+              कुछ मुलाक़ातें संयोग होती हैं,<br className="hidden sm:block" />
+              कुछ रिश्ते धीरे-धीरे घर बन जाते हैं।
+            </p>
+          </motion.div>
+
+          {/* Story Timeline */}
+          <div className="relative hidden md:flex w-full flex-col gap-[90px] lg:gap-[100px] pb-12">
+            
+            {/* Connecting Line (Desktop/Tablet) */}
+            <div className="hidden md:block absolute left-1/2 top-[5%] bottom-[5%] w-[1px] bg-gradient-to-b from-transparent via-[#B78B4A] to-transparent opacity-40 -translate-x-1/2" />
+
+            {/* Moment 1 */}
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.3 } } }}
+              className="flex flex-col md:flex-row items-center w-full gap-1 sm:gap-6 md:gap-10 lg:gap-16"
+            >
+              {/* Image Left */}
+              <div className="w-full md:w-1/2 flex justify-center md:justify-end relative">
+                <motion.img 
+                  variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}
+                  src={ASSETS.story1} 
+                  alt="पहली मुलाक़ात" 
+                  className="w-[64vw] max-w-[250px] md:w-auto h-auto md:max-h-[340px] lg:max-h-[360px] object-contain drop-shadow-xl rounded-sm" 
+                />
+              </div>
+              
+              {/* Text Right */}
+              <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left relative z-10 px-2 md:px-0">
+                <motion.div variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } } }} className="text-[#B78B4A] font-tiro text-3xl sm:text-4xl md:text-6xl lg:text-7xl opacity-40 mb-0 md:mb-2 md:-ml-1">01</motion.div>
+                <motion.h3 variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 1 } } }} className="text-[#5A1520] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-amita mb-1 sm:mb-3 drop-shadow-sm">पहली मुलाक़ात</motion.h3>
+                <motion.p variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 1.2 } } }} className="text-[#4A2014] font-noto text-[14px] sm:text-[15px] md:text-[17px] leading-relaxed opacity-85 max-w-[95%] md:max-w-[400px] mx-auto md:mx-0">
+                  एक अनजानी सी शुरुआत, जिसने दिल के तारों को कुछ इस तरह छुआ कि हर अजनबी पल भी अपना सा लगने लगा।
+                </motion.p>
+              </div>
+            </motion.div>
+
+            {/* Moment 2 */}
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.3 } } }}
+              className="flex flex-col md:flex-row-reverse items-center w-full gap-1 sm:gap-6 md:gap-10 lg:gap-16"
+            >
+              {/* Image Right */}
+              <div className="w-full md:w-1/2 flex justify-center md:justify-start relative">
+                <motion.img 
+                  variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}
+                  src={ASSETS.story2} 
+                  alt="साथ का सफ़र" 
+                  className="w-[64vw] max-w-[250px] md:w-auto h-auto md:max-h-[340px] lg:max-h-[360px] object-contain drop-shadow-xl rounded-sm" 
+                />
+              </div>
+              
+              {/* Text Left */}
+              <div className="w-full md:w-1/2 flex flex-col items-center md:items-end text-center md:text-right relative z-10 px-2 md:px-0">
+                <motion.div variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } } }} className="text-[#B78B4A] font-tiro text-3xl sm:text-4xl md:text-6xl lg:text-7xl opacity-40 mb-0 md:mb-2 md:-mr-1">02</motion.div>
+                <motion.h3 variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 1 } } }} className="text-[#5A1520] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-amita mb-1 sm:mb-3 drop-shadow-sm">साथ का सफ़र</motion.h3>
+                <motion.p variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 1.2 } } }} className="text-[#4A2014] font-noto text-[14px] sm:text-[15px] md:text-[17px] leading-relaxed opacity-85 max-w-[95%] md:max-w-[400px] mx-auto md:mx-0">
+                  हँसी, बातों और छोटे-छोटे अनमोल लम्हों से बुना गया वह सफर, जहाँ दो अलग दुनिया एक हो गईं।
+                </motion.p>
+              </div>
+            </motion.div>
+
+            {/* Moment 3 */}
+            <motion.div 
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.3 } } }}
+              className="flex flex-col md:flex-row items-center w-full gap-1 sm:gap-6 md:gap-10 lg:gap-16"
+            >
+              {/* Image Left */}
+              <div className="w-full md:w-1/2 flex justify-center md:justify-end relative">
+                <motion.img 
+                  variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 1.2, ease: "easeOut" } } }}
+                  src={ASSETS.story3} 
+                  alt="हमेशा के लिए" 
+                  className="w-[64vw] max-w-[250px] md:w-auto h-auto md:max-h-[340px] lg:max-h-[360px] object-contain drop-shadow-xl rounded-sm" 
+                />
+              </div>
+              
+              {/* Text Right */}
+              <div className="w-full md:w-1/2 flex flex-col items-center md:items-start text-center md:text-left relative z-10 px-2 md:px-0">
+                <motion.div variants={{ hidden: { opacity: 0, x: 20 }, visible: { opacity: 1, x: 0, transition: { duration: 1, ease: "easeOut" } } }} className="text-[#B78B4A] font-tiro text-3xl sm:text-4xl md:text-6xl lg:text-7xl opacity-40 mb-0 md:mb-2 md:-ml-1">03</motion.div>
+                <motion.h3 variants={{ hidden: { opacity: 0, y: 10 }, visible: { opacity: 1, y: 0, transition: { duration: 1 } } }} className="text-[#5A1520] text-xl sm:text-2xl md:text-3xl lg:text-4xl font-amita mb-1 sm:mb-3 drop-shadow-sm">हमेशा के लिए</motion.h3>
+                <motion.p variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { duration: 1.2 } } }} className="text-[#4A2014] font-noto text-[14px] sm:text-[15px] md:text-[17px] leading-relaxed opacity-85 max-w-[95%] md:max-w-[400px] mx-auto md:mx-0">
+                  अब यह रिश्ता सिर्फ यादें नहीं, बल्कि एक दूसरे का हाथ थाम कर उम्र भर साथ चलने का खूबसूरत वचन बन चुका है।
+                </motion.p>
+              </div>
+            </motion.div>
+
+          </div>
+
+          {/* Mobile Storybook */}
+          <div className="relative flex md:hidden w-full flex-col items-center mt-2 overflow-visible">
+            <div className="relative grid w-full place-items-center" style={{ perspective: "1200px" }}>
+              <AnimatePresence initial={false} custom={storyDirection} mode="wait">
+                <motion.div
+                  key={storyPage}
+                  custom={storyDirection}
+                  variants={{
+                    enter: (dir) => ({ rotateY: dir > 0 ? 90 : -90, opacity: 0 }),
+                    center: { rotateY: 0, opacity: 1, transition: { duration: 0.7, ease: "easeInOut" } },
+                    exit: (dir) => ({ rotateY: dir < 0 ? 90 : -90, opacity: 0, transition: { duration: 0.7, ease: "easeInOut" } })
+                  }}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
+                  style={{ transformOrigin: "center", backfaceVisibility: "hidden" }}
+                  className="w-full flex flex-col items-center col-start-1 row-start-1 pt-2"
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(e, { offset, velocity }) => {
+                    const swipe = Math.abs(offset.x) * velocity.x;
+                    if (swipe < -10000 || offset.x < -40) {
+                      paginateStory(1);
+                    } else if (swipe > 10000 || offset.x > 40) {
+                      paginateStory(-1);
+                    }
+                  }}
+                >
+                  {[
+                    {
+                      num: "01", title: "पहली मुलाक़ात", img: ASSETS.story1,
+                      text: "एक अनजानी सी शुरुआत, जिसने दिल के तारों को कुछ इस तरह छुआ कि हर अजनबी पल भी अपना सा लगने लगा।"
+                    },
+                    {
+                      num: "02", title: "साथ का सफ़र", img: ASSETS.story2,
+                      text: "हँसी, बातों और छोटे-छोटे अनमोल लम्हों से बुना गया वह सफर, जहाँ दो अलग दुनिया एक हो गईं।"
+                    },
+                    {
+                      num: "03", title: "हमेशा के लिए", img: ASSETS.story3,
+                      text: "अब यह रिश्ता सिर्फ यादें नहीं, बल्कि एक दूसरे का हाथ थाम कर उम्र भर साथ चलने का खूबसूरत वचन बन चुका है।"
+                    }
+                  ].map((s, i) => i === storyPage && (
+                    <div key={i} className="flex flex-col items-center text-center w-[72%] max-w-[270px] mx-auto pointer-events-none drop-shadow-sm pb-2">
+                      <img 
+                        src={s.img} 
+                        alt={s.title} 
+                        className="w-full h-auto max-h-[330px] object-cover drop-shadow-xl rounded-sm mb-4" 
+                      />
+                      <div className="text-[#B78B4A] font-tiro text-3xl opacity-50 mb-1">{s.num}</div>
+                      <h3 className="text-[#5A1520] text-xl font-amita mb-2 drop-shadow-sm">{s.title}</h3>
+                      <p className="text-[#4A2014] font-noto text-[14px] leading-relaxed opacity-85 w-full mx-auto">
+                        {s.text}
+                      </p>
+                    </div>
+                  ))}
+                </motion.div>
+              </AnimatePresence>
+            </div>
+            
+            {/* Mobile Nav */}
+            <div className="relative w-[72%] max-w-[270px] mx-auto flex flex-col items-center z-20 mt-4 mb-2">
+              <div className="flex items-center gap-3 text-[#B78B4A] text-xs opacity-70 mb-4 tracking-widest font-noto">
+                <span className={storyPage === 0 ? "opacity-100 font-bold scale-110 transition-transform" : ""}>01</span> • 
+                <span className={storyPage === 1 ? "opacity-100 font-bold scale-110 transition-transform" : ""}>02</span> • 
+                <span className={storyPage === 2 ? "opacity-100 font-bold scale-110 transition-transform" : ""}>03</span>
+              </div>
+              <div className="flex items-center justify-between w-full">
+                 <button 
+                   onClick={() => paginateStory(-1)} 
+                   className={`text-[#5A1520] font-noto text-[13px] font-medium tracking-wide opacity-90 transition-opacity ${storyPage === 0 ? 'invisible' : 'visible'}`}
+                 >
+                   ← पिछली
+                 </button>
+                 <button 
+                   onClick={() => paginateStory(1)} 
+                   className={`text-[#5A1520] font-noto text-[13px] font-medium tracking-wide opacity-90 transition-opacity ${storyPage === 2 ? 'invisible' : 'visible'}`}
+                 >
+                   अगली →
+                 </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Ending Text */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.8 }}
+            variants={{ hidden: { opacity: 0, y: 15 }, visible: { opacity: 1, y: 0, transition: { duration: 1.5, ease: "easeOut" } } }}
+            className={`w-[72%] max-w-[270px] md:w-full md:max-w-none mx-auto text-center mt-4 sm:mt-12 md:mt-16 mb-6 md:mb-8 ${storyPage === 2 ? "block" : "hidden md:block"}`}
+          >
+            <p className="text-[#5A1520] text-[16px] sm:text-[20px] md:text-[26px] font-amita leading-relaxed drop-shadow-sm w-full mx-auto opacity-95">
+              “और अब, इस कहानी का सबसे सुंदर अध्याय<br className="block md:hidden" /> शुरू होने वाला है…”
+            </p>
+          </motion.div>
+
+        </div>
       </section>
 
     </main>
