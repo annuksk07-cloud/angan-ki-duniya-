@@ -81,7 +81,7 @@ const CountdownSection = () => {
   }, []);
 
   return (
-    <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-12 sm:py-20 md:py-28 lg:py-32 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
+    <section className="relative w-full flex flex-col items-center text-center bg-[#F8F0DF] py-10 sm:py-16 md:py-24 lg:py-28 min-h-[100svh] md:min-h-[82svh] lg:min-h-0 overflow-hidden">
       <motion.img 
         initial={{ scale: 1.05, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1, transition: { duration: 3, ease: "easeOut" } }}
@@ -101,16 +101,16 @@ const CountdownSection = () => {
           }}
           className="flex flex-col items-center text-center w-full"
         >
-          <h2 className="text-[#5A1520] text-[28px] sm:text-4xl md:text-5xl font-tiro mb-6 sm:mb-8 drop-shadow-sm">शुभ विवाह</h2>
-          <div className="w-12 sm:w-16 h-[1px] bg-[#B78B4A] mb-8 sm:mb-12 origin-center" />
-          <div className="text-[#5A1520] text-[26px] sm:text-3xl md:text-4xl font-normal font-amita drop-shadow-md mb-8 sm:mb-10">काव्या & आदित्य</div>
-          <p className="text-[#B78B4A] font-noto text-[18px] sm:text-[22px] md:text-[24px] font-medium tracking-widest drop-shadow-sm mb-12 sm:mb-16">12 • 12 • 2026</p>
-          <p className="text-[#4A2014] font-noto text-[16px] sm:text-[19px] md:text-[21px] leading-[2] font-medium mb-10 sm:mb-12">
+          <h2 className="text-[#5A1520] text-[26px] sm:text-4xl md:text-5xl font-tiro mb-4 sm:mb-8 drop-shadow-sm">शुभ विवाह</h2>
+          <div className="w-12 sm:w-16 h-[1px] bg-[#B78B4A] mb-6 sm:mb-10 origin-center" />
+          <div className="text-[#5A1520] text-[24px] sm:text-3xl md:text-4xl font-normal font-amita drop-shadow-md mb-6 sm:mb-10">काव्या & आदित्य</div>
+          <p className="text-[#B78B4A] font-noto text-[17px] sm:text-[22px] md:text-[24px] font-medium tracking-widest drop-shadow-sm mb-10 sm:mb-16">12 • 12 • 2026</p>
+          <p className="text-[#4A2014] font-noto text-[16px] sm:text-[19px] md:text-[21px] leading-[2] font-medium mb-8 sm:mb-12">
             {timeLeft.isOver ? 'शुभ विवाह का मंगल दिवस आ गया है।' : 'हमारे शुभ मिलन में अब…'}
           </p>
 
           {!timeLeft.isOver && (
-            <div className="flex items-center justify-center gap-4 sm:gap-8 md:gap-12 w-full">
+            <div className="flex items-center justify-center gap-6 sm:gap-10 md:gap-14 w-full">
               {[
                 { label: 'Days', value: timeLeft.days },
                 { label: 'Hours', value: timeLeft.hours },
@@ -345,10 +345,10 @@ const RsvpSection = () => {
             <div className="w-full flex justify-center mt-6">
               <button 
                 type="submit"
-                className="relative group flex items-center justify-center px-10 py-3.5 bg-gradient-to-br from-[#F4E6C8] to-[#E8D1A7] border border-[#B78B4A]/60 rounded-sm shadow-[0_4px_14px_rgba(90,21,32,0.12)] transition-all duration-300 hover:shadow-[0_6px_20px_rgba(90,21,32,0.18)] hover:-translate-y-0.5 overflow-hidden w-[90%] sm:w-auto"
+                className="relative group flex items-center justify-center px-10 py-4 sm:py-3.5 bg-gradient-to-br from-[#F4E6C8] to-[#E8D1A7] border border-[#B78B4A]/60 rounded-sm shadow-[0_4px_14px_rgba(90,21,32,0.12)] transition-all duration-300 hover:shadow-[0_6px_20px_rgba(90,21,32,0.18)] hover:-translate-y-0.5 overflow-hidden w-[90%] sm:w-auto"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FFF8EB]/60 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
-                <span className="relative z-10 text-[#5A1520] font-noto text-[15px] sm:text-[17px] font-medium tracking-wide drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">
+                <span className="relative z-10 text-[#5A1520] font-noto text-[16px] sm:text-[17px] font-medium tracking-wide drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">
                   Confirm Attendance
                 </span>
               </button>
@@ -1647,19 +1647,19 @@ export default function App() {
                 href="https://www.google.com/maps/search/?api=1&query=Jai+Mahal+Palace,+Jacob+Road,+Civil+Lines,+Jaipur,+Rajasthan+302006" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="relative group flex items-center justify-center px-10 py-3.5 bg-gradient-to-br from-[#F4E6C8] to-[#E8D1A7] border border-[#B78B4A]/60 rounded-sm shadow-[0_4px_14px_rgba(90,21,32,0.12)] transition-all duration-300 hover:shadow-[0_6px_20px_rgba(90,21,32,0.18)] hover:-translate-y-0.5 overflow-hidden w-[80%] sm:w-auto max-w-[280px]"
+                className="relative group flex items-center justify-center px-10 py-4 sm:py-3.5 bg-gradient-to-br from-[#F4E6C8] to-[#E8D1A7] border border-[#B78B4A]/60 rounded-sm shadow-[0_4px_14px_rgba(90,21,32,0.12)] transition-all duration-300 hover:shadow-[0_6px_20px_rgba(90,21,32,0.18)] hover:-translate-y-0.5 overflow-hidden w-[85%] sm:w-auto max-w-[280px]"
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#FFF8EB]/60 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000 ease-in-out" />
-                <span className="relative z-10 text-[#5A1520] font-noto text-[15px] sm:text-[17px] font-medium tracking-wide drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">
+                <span className="relative z-10 text-[#5A1520] font-noto text-[16px] sm:text-[17px] font-medium tracking-wide drop-shadow-[0_1px_1px_rgba(255,255,255,0.5)]">
                   स्थान देखें →
                 </span>
               </a>
 
               <a 
                 href="tel:7827357021"
-                className="relative group flex items-center justify-center px-10 py-3.5 bg-[#F8F0DF]/50 border border-[#5A1520]/30 rounded-sm shadow-sm transition-all duration-300 hover:bg-[#F4E6C8]/80 hover:border-[#5A1520]/50 hover:-translate-y-0.5 w-[80%] sm:w-auto max-w-[280px]"
+                className="relative group flex items-center justify-center px-10 py-4 sm:py-3.5 bg-[#F8F0DF]/50 border border-[#5A1520]/30 rounded-sm shadow-sm transition-all duration-300 hover:bg-[#F4E6C8]/80 hover:border-[#5A1520]/50 hover:-translate-y-0.5 w-[85%] sm:w-auto max-w-[280px]"
               >
-                <span className="relative z-10 text-[#5A1520] font-noto text-[15px] sm:text-[17px] font-medium tracking-wide">
+                <span className="relative z-10 text-[#5A1520] font-noto text-[16px] sm:text-[17px] font-medium tracking-wide">
                   संपर्क करें
                 </span>
               </a>
@@ -1677,10 +1677,8 @@ export default function App() {
       <section className="relative w-full flex flex-col items-center justify-center text-center bg-[#F8F0DF] py-16 sm:py-24 md:py-32 lg:py-40 min-h-[100svh] md:min-h-[82svh] lg:min-h-[100svh] overflow-hidden">
         {/* Master background - Slow ambient breathing */}
         <motion.img 
-          initial={{ scale: 1.1, opacity: 0 }}
-          whileInView={{ scale: 1.02, opacity: 1, transition: { duration: 4, ease: "easeOut" } }}
-          animate={{ scale: [1.02, 1.05, 1.02] }}
-          transition={{ duration: 15, ease: "easeInOut", repeat: Infinity }}
+          initial={{ scale: 1.06, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1, transition: { duration: 8, ease: "easeOut" } }}
           viewport={{ once: true, amount: 0.1 }}
           src={ASSETS.familyBg}
           alt=""
