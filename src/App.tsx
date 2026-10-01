@@ -455,9 +455,58 @@ export default function App() {
   }, [isOpen]);
 
   const [maxDrag, setMaxDrag] = useState(200);
+  const dismissBarrier = () => {
+    const barrier = document.getElementById('initial-curtain-barrier');
+    if (barrier) {
+      barrier.remove();
+    }
+    if (typeof document !== 'undefined') {
+      document.body.classList.remove('initial-loading');
+    }
+  };
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
+      window.scrollTo(0, 0);
       setMaxDrag(window.innerWidth * 0.42);
+    }
+
+    const removeBarrier = () => {
+      const barrier = document.getElementById('initial-curtain-barrier');
+      if (barrier) {
+        barrier.style.transition = 'opacity 0.25s ease-out';
+        barrier.style.opacity = '0';
+        setTimeout(() => {
+          barrier.remove();
+          if (typeof document !== 'undefined') {
+            document.body.classList.remove('initial-loading');
+          }
+        }, 250);
+      } else {
+        if (typeof document !== 'undefined') {
+          document.body.classList.remove('initial-loading');
+        }
+      }
+    };
+
+    const isTablet = typeof window !== 'undefined' && window.innerWidth >= 768 && window.innerWidth <= 1023;
+    const curtainSrc = isTablet ? ASSETS.curtainTablet : ASSETS.curtain;
+    const img = new Image();
+    img.src = curtainSrc;
+
+    const onCurtainDecoded = () => {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          removeBarrier();
+        });
+      });
+    };
+
+    if (img.complete) {
+      onCurtainDecoded();
+    } else {
+      img.onload = onCurtainDecoded;
+      img.onerror = onCurtainDecoded;
     }
   }, []);
 
@@ -477,6 +526,7 @@ export default function App() {
   const holderHighlightRight = useTransform(xRight, [0, maxDrag * 0.1], [0, 1]);
 
   const handleDragEndLeft = () => {
+    dismissBarrier();
     if (leftHooked) return;
     if (xLeft.get() <= -maxDrag * 0.6) {
       setLeftHooked(true);
@@ -487,6 +537,7 @@ export default function App() {
   };
 
   const handleDragEndRight = () => {
+    dismissBarrier();
     if (rightHooked) return;
     if (xRight.get() >= maxDrag * 0.6) {
       setRightHooked(true);
@@ -594,7 +645,7 @@ export default function App() {
         <div className="absolute inset-0 z-30 pointer-events-none">
           {/* Left Curtain Panel */}
           <motion.div 
-            className="absolute inset-y-0 left-0 origin-left overflow-hidden pointer-events-none"
+            className="absolute inset-y-0 left-0 origin-left overflow-hidden pointer-events-none bg-[#2b080c]"
             style={{ 
               clipPath: clipPathLeft, 
               width: "50%",
@@ -624,7 +675,7 @@ export default function App() {
 
           {/* Right Curtain Panel */}
           <motion.div 
-            className="absolute inset-y-0 right-0 origin-right overflow-hidden pointer-events-none"
+            className="absolute inset-y-0 right-0 origin-right overflow-hidden pointer-events-none bg-[#2b080c]"
             style={{ 
               clipPath: clipPathRight, 
               width: "50%",
@@ -662,7 +713,10 @@ export default function App() {
             dragElastic={0.05}
             dragMomentum={false}
             style={{ x: xLeft }}
-            onDragStart={() => setIsDraggingLeft(true)}
+            onDragStart={() => {
+              dismissBarrier();
+              setIsDraggingLeft(true);
+            }}
             onDragEnd={(e, info) => {
               setIsDraggingLeft(false);
               handleDragEndLeft();
@@ -677,7 +731,10 @@ export default function App() {
             dragElastic={0.05}
             dragMomentum={false}
             style={{ x: xRight }}
-            onDragStart={() => setIsDraggingRight(true)}
+            onDragStart={() => {
+              dismissBarrier();
+              setIsDraggingRight(true);
+            }}
             onDragEnd={(e, info) => {
               setIsDraggingRight(false);
               handleDragEndRight();
