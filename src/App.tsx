@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform, animate, useScroll } from 'motion/react';
+import { PWAControls } from './components/PWAControls';
 
 const ASSETS = {
   entrance: "https://lh3.googleusercontent.com/d/1WZpZ2vSFvDFVoAmAyMdyiVei4SUcQllQ",
@@ -1783,6 +1784,7 @@ export default function App() {
           </motion.div>
         </div>
       </section>
+      <PWAControls />
 </main>
   );
 }
