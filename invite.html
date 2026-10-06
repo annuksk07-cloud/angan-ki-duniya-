@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Angan Ki Duniya | Wedding Invitation</title>
+    <meta name="description" content="Join us for our wedding celebration." />
+    <meta name="theme-color" content="#2b080c" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="AANGAN" />
+    <link rel="shortcut icon" href="/assets/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/assets/icon-512x512.png" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+    <!-- Open Graph Metadata for /invite -->
+    <meta property="og:title" content="Angan Ki Duniya | Wedding Invitation" />
+    <meta property="og:description" content="Join us for our wedding celebration." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Vivah Store" />
+    <meta property="og:url" content="https://angan-ki-duniya.vercel.app/invite" />
+    <meta property="og:image" content="https://angan-ki-duniya.vercel.app/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:type" content="image/jpeg" />
+
+    <!-- Twitter / X Metadata for /invite -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Angan Ki Duniya | Wedding Invitation" />
+    <meta name="twitter:description" content="Join us for our wedding celebration." />
+    <meta name="twitter:image" content="https://angan-ki-duniya.vercel.app/og-image.jpg" />
+
+    <!-- Prevent browser scroll restoration flash on refresh -->
+    <script>
+      if ('scrollRestoration' in history) {
+        history.scrollRestoration = 'manual';
+      }
+      window.scrollTo(0, 0);
+    </script>
+
+    <!-- Critical Preload for First-Paint Curtain Interface ONLY -->
+    <link rel="preload" as="image" href="https://lh3.googleusercontent.com/d/1r0AN7KEwdB3Xlx9DoF3RHgEP9E2nXmf8" media="(max-width: 767px), (min-width: 1024px)" fetchpriority="high">
+    <link rel="preload" as="image" href="https://lh3.googleusercontent.com/d/1Zs7G0wzRUm14bogHgh3ZAOonp7evADKA" media="(min-width: 768px) and (max-width: 1023px)" fetchpriority="high">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Amita:wght@400;700&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Tiro+Devanagari+Hindi:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+
+    <style>
+      html:has(body.initial-loading), body.initial-loading {
+        background-color: #2b080c;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+      }
+      #initial-curtain-barrier {
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        display: flex;
+        overflow: hidden;
+        background-color: #2b080c;
+        pointer-events: auto;
+      }
+      .barrier-curtain-panel {
+        position: relative;
+        width: 50vw;
+        height: 100dvh;
+        overflow: hidden;
+        background-color: #2b080c;
+      }
+      .barrier-left {
+        transform-origin: left center;
+      }
+      .barrier-right {
+        transform-origin: right center;
+      }
+      .barrier-curtain-inner {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 50vw;
+      }
+      .barrier-left .barrier-curtain-inner {
+        left: 0;
+      }
+      .barrier-right .barrier-curtain-inner {
+        right: 0;
+      }
+      .barrier-curtain-center {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        transform-origin: top center;
+      }
+      .barrier-left .barrier-curtain-center {
+        left: 0;
+      }
+      .barrier-right .barrier-curtain-center {
+        right: 0;
+      }
+      .barrier-img-mobile-desktop {
+        display: block;
+        width: 125vw;
+        height: 115dvh;
+        transform: translateY(-7dvh);
+        object-fit: cover;
+        object-position: top;
+        max-width: none;
+        flex-shrink: 0;
+      }
+      .barrier-img-tablet {
+        display: none;
+        width: 100vw;
+        height: 100dvh;
+        object-fit: cover;
+        object-position: top;
+        max-width: none;
+        flex-shrink: 0;
+      }
+      @media (min-width: 768px) and (max-width: 1023px) {
+        .barrier-img-mobile-desktop {
+          display: none !important;
+        }
+        .barrier-img-tablet {
+          display: block !important;
+        }
+      }
+      .barrier-text-overlay {
+        position: absolute;
+        inset: 0;
+        z-index: 100000;
+        pointer-events: none;
+        display: flex;
+        justify-content: center;
+      }
+      .barrier-text-box {
+        position: absolute;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90%;
+        max-width: 24rem;
+        text-align: center;
+      }
+      @media (min-width: 640px) {
+        .barrier-text-box {
+          top: 22%;
+        }
+      }
+      .barrier-glow {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse at center, rgba(60,20,20,0.5) 0%, transparent 70%);
+        pointer-events: none;
+        filter: blur(24px);
+      }
+      .barrier-title {
+        position: relative;
+        z-index: 10;
+        font-family: 'Tiro Devanagari Hindi', serif;
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+        color: #F8F0DF;
+        margin-bottom: 0.75rem;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+      }
+      @media (min-width: 640px) {
+        .barrier-title {
+          font-size: 3rem;
+          line-height: 1;
+          margin-bottom: 1rem;
+        }
+      }
+      .barrier-divider {
+        position: relative;
+        z-index: 10;
+        width: 2.5rem;
+        height: 1px;
+        background-color: #B78B4A;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1.5rem;
+        opacity: 0.9;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      }
+      @media (min-width: 640px) {
+        .barrier-divider {
+          margin-bottom: 2rem;
+        }
+      }
+      .barrier-desc {
+        position: relative;
+        z-index: 10;
+        font-family: 'Noto Serif Devanagari', serif;
+        font-size: 15px;
+        color: #F8F0DF;
+        line-height: 1.8;
+        font-weight: 500;
+        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.8));
+      }
+      @media (min-width: 640px) {
+        .barrier-desc {
+          font-size: 1.125rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="initial-loading">
+    <div id="initial-curtain-barrier" aria-hidden="true">
+      <div class="barrier-curtain-panel barrier-left">
+        <div class="barrier-curtain-inner">
+          <div class="barrier-curtain-center">
+            <img src="https://lh3.googleusercontent.com/d/1r0AN7KEwdB3Xlx9DoF3RHgEP9E2nXmf8" class="barrier-img-mobile-desktop" alt="" fetchpriority="high" />
+            <img src="https://lh3.googleusercontent.com/d/1Zs7G0wzRUm14bogHgh3ZAOonp7evADKA" class="barrier-img-tablet" alt="" fetchpriority="high" />
+          </div>
+        </div>
+      </div>
+      <div class="barrier-curtain-panel barrier-right">
+        <div class="barrier-curtain-inner">
+          <div class="barrier-curtain-center">
+            <img src="https://lh3.googleusercontent.com/d/1r0AN7KEwdB3Xlx9DoF3RHgEP9E2nXmf8" class="barrier-img-mobile-desktop" alt="" fetchpriority="high" />
+            <img src="https://lh3.googleusercontent.com/d/1Zs7G0wzRUm14bogHgh3ZAOonp7evADKA" class="barrier-img-tablet" alt="" fetchpriority="high" />
+          </div>
+        </div>
+      </div>
+      <div class="barrier-text-overlay">
+        <div class="barrier-text-box">
+          <div class="barrier-glow"></div>
+          <h1 class="barrier-title">शुभारंभ</h1>
+          <div class="barrier-divider"></div>
+          <p class="barrier-desc">
+            अपना निमंत्रण खोलें<br/>
+            हमारे परिवार की ओर से सप्रेम आमंत्रण
+          </p>
+        </div>
+      </div>
+    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
