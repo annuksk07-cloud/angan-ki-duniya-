@@ -367,6 +367,83 @@ export default function App() {
   const invScale = useTransform(invScroll, [0, 0.5], [1.15, 1]);
   const invY = useTransform(invScroll, [0, 1], ["-1%", "1%"]);
   
+  // SoundCloud Audio State
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+  const scWidgetRef = useRef<any>(null);
+  const hasStartedAudio = useRef(false);
+  const [isMuted, setIsMuted] = useState(false);
+
+  useEffect(() => {
+    const initSC = () => {
+      if ((window as any).SC && iframeRef.current) {
+        try {
+          const widget = (window as any).SC.Widget(iframeRef.current);
+          scWidgetRef.current = widget;
+        } catch (e) {
+          console.error("SC widget init error:", e);
+        }
+      }
+    };
+
+    if (!(window as any).SC) {
+      const script = document.createElement('script');
+      script.src = 'https://w.soundcloud.com/player/api.js';
+      script.async = true;
+      script.onload = initSC;
+      document.body.appendChild(script);
+    } else {
+      initSC();
+    }
+  }, []);
+
+  const startAudio = () => {
+    if (!hasStartedAudio.current) {
+      hasStartedAudio.current = true;
+      if (scWidgetRef.current) {
+        try {
+          scWidgetRef.current.setVolume(100);
+          scWidgetRef.current.play();
+          setIsMuted(false);
+        } catch (e) {
+          console.error("Error playing SC audio:", e);
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      startAudio();
+    };
+    window.addEventListener('pointerdown', handleFirstInteraction, { once: true });
+    window.addEventListener('touchstart', handleFirstInteraction, { once: true });
+    return () => {
+      window.removeEventListener('pointerdown', handleFirstInteraction);
+      window.removeEventListener('touchstart', handleFirstInteraction);
+    };
+  }, []);
+
+  const toggleMute = () => {
+    if (!hasStartedAudio.current) {
+      startAudio();
+      return;
+    }
+    if (scWidgetRef.current) {
+      try {
+        if (isMuted) {
+          scWidgetRef.current.setVolume(100);
+          scWidgetRef.current.play();
+          setIsMuted(false);
+        } else {
+          scWidgetRef.current.setVolume(0);
+          setIsMuted(true);
+        }
+      } catch (e) {
+        console.error("Error toggling mute:", e);
+      }
+    }
+  };
+  
 
   const [leftHooked, setLeftHooked] = useState(false);
   const [isDraggingLeft, setIsDraggingLeft] = useState(false);
@@ -552,6 +629,38 @@ export default function App() {
     <main 
       className={`relative w-full min-h-[100dvh] overflow-x-hidden bg-[#F8F0DF] selection:bg-[#D89A32] selection:text-white ${!isOpen ? 'h-[100dvh] overflow-hidden' : ''}`}
     >
+      {/* Hidden SoundCloud Player */}
+      <iframe
+        ref={iframeRef}
+        id="sc-player"
+        title="SoundCloud Audio Player"
+        className="hidden pointer-events-none fixed -top-[9999px] -left-[9999px] w-1 h-1 opacity-0"
+        allow="autoplay"
+        src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F2413931406&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false"
+      />
+
+      {/* Premium Mute / Unmute Button */}
+      <button
+        onClick={toggleMute}
+        className="fixed top-4 right-4 z-[90] flex items-center gap-2 rounded-full bg-[#3A0C12]/90 hover:bg-[#5A1520] border border-[#B78B4A]/60 px-3 py-1.5 sm:px-3.5 sm:py-2 text-[#F8F0DF] shadow-[0_4px_16px_rgba(0,0,0,0.3)] backdrop-blur-md transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer"
+        title={isMuted ? "संगीत चालू करें (Unmute)" : "संगीत म्यूट करें (Mute)"}
+        aria-label="Toggle Background Music"
+      >
+        {isMuted ? (
+          <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D89A32]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+          </svg>
+        ) : (
+          <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D89A32] animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M15.536 8.464a5 5 0 010 7.072M18.364 5.636a9 9 0 010 12.728M11 5L6 9H2v6h4l5 4V5z" />
+          </svg>
+        )}
+        <span className="font-tiro text-[11px] sm:text-xs tracking-wide">
+          {isMuted ? 'म्यूट' : 'संगीत'}
+        </span>
+      </button>
+
       {/* HERO SECTION */}
           <section className="relative w-full h-[100dvh] overflow-hidden">
             
@@ -717,6 +826,7 @@ export default function App() {
             onDragStart={() => {
               dismissBarrier();
               setIsDraggingLeft(true);
+              startAudio();
             }}
             onDragEnd={(e, info) => {
               setIsDraggingLeft(false);
@@ -735,6 +845,7 @@ export default function App() {
             onDragStart={() => {
               dismissBarrier();
               setIsDraggingRight(true);
+              startAudio();
             }}
             onDragEnd={(e, info) => {
               setIsDraggingRight(false);
@@ -746,8 +857,8 @@ export default function App() {
         {/* Curtain Text Overlay */}
         <motion.div 
           className="absolute inset-0 z-40 pointer-events-none"
-          animate={(leftHooked || rightHooked) ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
+          animate={(leftHooked || rightHooked || isDraggingLeft || isDraggingRight) ? { opacity: 0, y: -20 } : { opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
         >
           <div className="absolute top-[20%] sm:top-[22%] left-1/2 -translate-x-1/2 w-[90%] max-w-sm text-center">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(60,20,20,0.5)_0%,transparent_70%)] pointer-events-none blur-xl" />
@@ -759,6 +870,20 @@ export default function App() {
               अपना निमंत्रण खोलें<br/>
               हमारे परिवार की ओर से सप्रेम आमंत्रण
             </p>
+
+            {/* Minimal Curtain Gesture Cue */}
+            <motion.div 
+              className="relative z-10 mt-6 sm:mt-8 flex items-center justify-center gap-2"
+              animate={{ opacity: [0.7, 1, 0.7] }}
+              transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <svg className="w-4 h-4 text-[#D89A32]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 16l-4-4m0 0l4-4m-4 4h18M17 16l4-4m0 0l-4-4" />
+              </svg>
+              <span className="text-[13px] sm:text-[14px] font-noto text-[#F8F0DF] font-medium tracking-wide drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)]">
+                दोनों पर्दों को खींचकर खोलें
+              </span>
+            </motion.div>
           </div>
         </motion.div>
 
